@@ -3,8 +3,8 @@ import { loginJson } from "../assets/Json/LoginJson"
 import type { Lang } from "../App"
 
 
-function Login({lang, setLang}:
-  {lang:Lang, setLang:React.Dispatch<React.SetStateAction<Lang>>}
+function Login({lang, toggleFade}:
+  {lang:Lang, toggleFade:(langParam:Lang) => void}
 ) {
   return (
     <main className="flex flex-col items-center gap-10">
@@ -21,8 +21,8 @@ function Login({lang, setLang}:
         <h2 className="text-center text-xl">{loginJson.language[lang]}</h2>
 
         <div>
-          <LangIcon src="/svg/spain.svg" alt="Spanish icon" onClick={()=> setLang("es")}/>
-          <LangIcon src="/svg/uk.svg" alt="English icon" onClick={()=> setLang("en")}/>
+          <LangIcon src="/svg/spain.svg" alt="Spanish icon" onClick={()=> toggleFade("es")}/>
+          <LangIcon src="/svg/uk.svg" alt="English icon" onClick={()=> toggleFade("en")}/>
         </div>
 
       </section>
