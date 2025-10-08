@@ -1,9 +1,8 @@
 import { Route, Routes } from 'react-router'
 import Login from './pages/Login'
 import Home from './pages/Home'
-import { use, useState } from 'react'
+import {  useState } from 'react'
 import Layout from './pages/Layout'
-
 
 export type Lang = "es" | "en"
 

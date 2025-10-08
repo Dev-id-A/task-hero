@@ -2,18 +2,21 @@ import LangIcon from "../assets/LangIcon"
 import { loginJson } from "../assets/Json/LoginJson"
 import type { Lang } from "../App"
 import type React from "react"
+import NightModeBtn from "../assets/NightModeBtn"
 
 
 function Login({lang, toggleFade, nightMode, setNightMode}:
-  {lang:Lang, toggleFade:(langParam:Lang) => void, nightMode:boolean, setNightMode:React.Dispatch<React.SetStateAction<Boolean>>}
+  {lang:Lang, toggleFade:(langParam:Lang) => void, nightMode:boolean, setNightMode:React.Dispatch<React.SetStateAction<boolean>>}
 ) {
   return (
     <main className={`flex flex-col items-center justify-center gap-10 ${nightMode ? "bg-black text-white":"bg-white"} min-h-screen`} >
       
       <h1 className="absolute top-0 bg-blue-500 w-full text-3xl">Task hero</h1>
       
+      <h2 className="text-center text-3xl">{loginJson.welcome[lang]}</h2>
+
+
       <section className="flex flex-col items-center gap-3">
-        <div className="text-center text-2xl">{loginJson.welcome[lang]}</div>
         <LangIcon src="public/svg/user-solid-full.svg" alt="Profile" background="bg-gray-300 rounded-full"/>
         <input className="border-1 text-center" type="text" name="username" id="username" placeholder={loginJson.userInput[lang]}/>
       </section>
@@ -28,13 +31,7 @@ function Login({lang, toggleFade, nightMode, setNightMode}:
 
       </section>
 
-      <button id="change-language" onClick={()=>setNightMode(!nightMode)} className="h-15 w-30 rounded-full bg-gray-600 px-3 cursor-pointer">
-            <div className="h-12 w-24 rounded-full bg-gray-400">
-                <div className={`text-lg border size-12 rounded-full bg-gray-500 transition-all duration-300 ease-in-out 
-                  ${nightMode ? "translate-x-12":"translate-x-0"}`}>
-                </div>
-            </div>
-        </button>
+      <NightModeBtn {...{nightMode, setNightMode}}/>
 
     </main>
 
