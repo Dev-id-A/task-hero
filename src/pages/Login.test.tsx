@@ -8,7 +8,7 @@ describe("Login", () =>{
     it("Looking if tests run", ()=>{
         render(
         <MemoryRouter>
-            <Login />
+            <Login lang="es" toggleFade={function(){}}/>
         </MemoryRouter>
         );
         expect(screen.getByText("Login")).toBeInTheDocument()
