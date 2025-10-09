@@ -2,10 +2,11 @@ import LangIcon from "../assets/LangIcon"
 import { loginJson } from "../assets/Json/LoginJson"
 import type { Lang } from "../App"
 import { Link } from "react-router"
+import type { Ref } from "react"
 
 
-function Login({lang, toggleFade, nightMode}:
-  {lang:Lang, toggleFade:(langParam:Lang) => void, nightMode:boolean}
+function Login({lang, toggleFade, nightMode, user}:
+  {lang:Lang, toggleFade:(langParam:Lang) => void, nightMode:boolean, user:Ref<HTMLInputElement>}
 ) {
   return (
     <main className={`flex flex-col items-center justify-center gap-20 ${nightMode ? "bg-black text-white":"bg-white"} min-h-screen`} >
@@ -17,7 +18,7 @@ function Login({lang, toggleFade, nightMode}:
 
       <section className="flex flex-col items-center gap-3">
         <LangIcon src="public/svg/user-solid-full.svg" alt="Profile" btnStyle="bg-gray-300 rounded-full p-1 border-1 rounded-full"/>
-        <input className="border-1 text-center" type="text" name="username" id="username" placeholder={loginJson.userInput[lang]}/>
+        <input className="border-1 text-center text-xl py-1" type="text" name="username" id="username" placeholder={loginJson.userInput[lang]} ref={user}/>
       </section>
 
       <section className="flex flex-col gap-3">
