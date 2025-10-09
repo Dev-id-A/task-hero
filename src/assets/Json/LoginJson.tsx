@@ -10,5 +10,9 @@ export const loginJson = {
     language:{
         es: "Idioma", 
         en: "Language"
+    },
+    enter:{
+        es: "Entrar",
+        en:"Enter"
     }
 } as const;
