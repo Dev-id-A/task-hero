@@ -6,8 +6,8 @@ function Home({nightMode, setNightMode, user}:
 ) {
   
   return (
-    <main>
-          <h1 className="text-center">Hello {user.current?.value}</h1>
+    <main className="min-h-screen">
+          <h1 className="text-center bg-blue-500 text-3xl">Hello {user.current?.value}</h1>
           <NightModeBtn {...{nightMode, setNightMode}}/>
     </main>
           

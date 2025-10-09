@@ -2,11 +2,11 @@ import LangIcon from "../assets/LangIcon"
 import { loginJson } from "../assets/Json/LoginJson"
 import type { Lang } from "../App"
 import { Link } from "react-router"
-import type { Ref } from "react"
+import type React from "react"
 
 
 function Login({lang, toggleFade, nightMode, user}:
-  {lang:Lang, toggleFade:(langParam:Lang) => void, nightMode:boolean, user:Ref<HTMLInputElement>}
+  {lang: Lang, toggleFade: (langParam:Lang) => void, nightMode: boolean, user: React.RefObject<HTMLInputElement | null>}
 ) {
   return (
     <main className={`flex flex-col items-center justify-center gap-20 ${nightMode ? "bg-black text-white":"bg-white"} min-h-screen`} >
@@ -30,10 +30,15 @@ function Login({lang, toggleFade, nightMode, user}:
         </div>
 
       </section>
-
-      <button className="border-1 text-2xl w-30 h-15 bg-blue-300">
-        <Link to={"home"}>{loginJson.enter[lang]}</Link>
-      </button>
+        {user.current?.value ? 
+        (
+        <button className="border-1 text-2xl w-30 h-15 bg-blue-300">
+          <Link to={"home"}>{loginJson.enter[lang]}</Link>
+        </button>
+        ):(
+        <button className="border-1 text-2xl w-30 h-15 bg-gray-300">{loginJson.enter[lang]}</button>
+        )}
+        
 
     </main>
 

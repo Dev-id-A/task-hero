@@ -10,7 +10,7 @@ function App() {
   const [lang, setLang] = useState<Lang>("es");
   const [fadeLang, setFadeLang] = useState(false);
   const [nightMode, setNightMode] = useState(false);
-  const user = useRef<HTMLInputElement>(null)
+  const user = useRef<HTMLInputElement | null>(null)
 
   const toggleFade = (langParam:Lang) => {
     if(langParam !== lang){
