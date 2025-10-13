@@ -1,5 +1,5 @@
-import type { Lang } from "../App"
-import { loginJson } from "../assets/Json/LoginJson"
+import type { Lang } from "../../App"
+import { loginJson } from "../Json/LoginJson"
 import { useNavigate } from "react-router"
 
 

@@ -1,8 +1,8 @@
-import LangIcon from "../assets/LangIcon"
+import LangIcon from "../assets/Options/LangIcon"
 import { loginJson } from "../assets/Json/LoginJson"
 import type { Lang } from "../App"
 import type React from "react"
-import LinkBtn from "../assets/LinkBtn"
+import LinkBtn from "../assets/Options/LinkBtn"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 
