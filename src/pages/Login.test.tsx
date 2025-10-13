@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import Login from "./Login";
+import Home from "./Home";
 import { describe, it, expect } from "vitest";
 import "@testing-library/jest-dom/vitest"
-import { MemoryRouter } from "react-router";
+import { MemoryRouter, Routes, Route } from "react-router";
 import userEvent from "@testing-library/user-event"
 import { useState, useRef } from "react";
 
@@ -15,8 +16,11 @@ function LoginPage() {
         setLang(langParam)
     };
     return(
-        <MemoryRouter>
-            <Login lang={lang} toggleFade={toggleFade} nightMode={false} user={user}/>
+        <MemoryRouter initialEntries={["/"]}>
+            <Routes>
+                <Route path="/" element={<Login lang={lang} toggleFade={toggleFade} nightMode={false} user={user}/>}/>
+                <Route path="/home" element={<Home lang={lang} nightMode={false} setNightMode={function(){}} user={user}/>} />
+            </Routes>
         </MemoryRouter>
     );
 }
@@ -43,9 +47,20 @@ describe("Login", () =>{
         await userEvent.click(esButton);
 
         expect(await screen.findByText("Bienvenido")).toBeInTheDocument()
-
-
-        
     });
 
+    it("Tries to enter in home page", async ()=>{
+        render(<LoginPage />);
+
+        const enterBtn = screen.getByRole("button", {name: /entrar/i})
+        const userInput = screen.getByPlaceholderText("Introduzca su nombre")
+
+        await userEvent.click(enterBtn)
+        expect(await screen.findByText("Bienvenido")).toBeInTheDocument()
+
+        await userEvent.type(userInput, "David")
+        await userEvent.click(enterBtn)
+        expect(await screen.findByText("Hola")).toBeInTheDocument()
+
+    })
 })

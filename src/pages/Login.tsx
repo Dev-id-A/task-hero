@@ -3,17 +3,29 @@ import { loginJson } from "../assets/Json/LoginJson"
 import type { Lang } from "../App"
 import type React from "react"
 import LinkBtn from "../assets/LinkBtn"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router"
 
 
 function Login({lang, toggleFade, nightMode, user}:
   {lang: Lang, toggleFade: (langParam:Lang) => void, nightMode: boolean, user: React.RefObject<HTMLInputElement | null>}
 ) {
-  const [hasValue, setHasValue] = useState(false)
+  const navigate = useNavigate();
+
+  const [hasValue, setHasValue] = useState(false);
+
+    useEffect(()=>{
+      const storedUser = localStorage.getItem("username");
+      if(storedUser && user.current){
+        user.current.value = storedUser
+        navigate("/home")
+      };
+  },[]);
 
   const handleChangeBtn = () =>{
     setHasValue(!!user.current?.value.trim())
   }
+
   return (
     <main className={`flex flex-col items-center justify-center gap-20 ${nightMode ? "bg-black text-white":"bg-white"} min-h-screen`} >
       
@@ -39,7 +51,7 @@ function Login({lang, toggleFade, nightMode, user}:
       </section>
         {hasValue ? 
         (
-          <LinkBtn {...{lang}}/>
+          <LinkBtn {...{lang, user}}/>
         ):(
         <button className="border-1 text-2xl w-30 h-15 bg-gray-300">{loginJson.enter[lang]}</button>
         )}
