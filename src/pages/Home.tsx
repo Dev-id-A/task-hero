@@ -4,6 +4,7 @@ import { homeJson } from "../assets/Json/HomeJson";
 import type { Lang } from "../App"
 import AddTaskBtn from "../assets/AddTaskBtn";
 import { useState } from "react";
+import TaskInput from "../assets/TaskInput";
 
 
 function Home({lang, nightMode, setNightMode}:
@@ -23,7 +24,9 @@ function Home({lang, nightMode, setNightMode}:
       </div>
 
       <section className="h-100 flex flex-col items-center justify-center border-3 m-8">
-        <AddTaskBtn {...{addTask, addTaskFun}}/>
+        {addTask ?
+        (<TaskInput {...{lang}}/>):
+        (<AddTaskBtn {...{lang, addTask, addTaskFun}}/>)}
       </section>
 
 
