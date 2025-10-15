@@ -16,6 +16,7 @@ function Login({lang, toggleFade, nightMode, user}:
 
     useEffect(()=>{
       const storedUser = localStorage.getItem("username");
+
       if(storedUser && user.current){
         user.current.value = storedUser
         navigate("/home")

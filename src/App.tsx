@@ -12,6 +12,7 @@ function App() {
   const [nightMode, setNightMode] = useState(false);
   const user = useRef<HTMLInputElement | null>(null)
 
+
   const toggleFade = (langParam:Lang) => {
     if(langParam !== lang){
     setFadeLang(true)
@@ -28,7 +29,7 @@ function App() {
         <Route path="/" element={<Layout {...{fadeLang}} />} >
 
           <Route index element={<Login {...{lang, toggleFade, nightMode, user}}/>}></Route>
-          <Route path="home" element={<Home {...{lang, nightMode, setNightMode, user}}/>} ></Route>
+          <Route path="home" element={<Home {...{lang, setLang, nightMode, setNightMode, user}}/>} ></Route>
 
         </Route>
         
