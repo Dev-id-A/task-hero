@@ -12,8 +12,8 @@ export const homeJson = {
         en: "Task:"
     },
     times:{
-        es: "Veces hecha:",
-        en: "Times done:"
+        es: "Veces:",
+        en: "Times:"
     },
     difficult:{
         es: "Dificultad:",
@@ -27,6 +27,10 @@ export const homeJson = {
         es: "Batalla épica contra los platos sucios",
         en: "Epic battle against dirty dishes"
     },
+    complete:{
+        es: "Completar",
+        en: "Complete"
+    }
     } as const;
 
     //Difficulty levels
