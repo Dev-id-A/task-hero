@@ -27,25 +27,28 @@ export const homeJson = {
         es: "Batalla épica contra los platos sucios",
         en: "Epic battle against dirty dishes"
     },
+    } as const;
+
     //Difficulty levels
-    veryEasy:{
-        es: "Muy fácil",
-        en: "Very easy"
-    }, 
-    easy:{
-        es: "Fácil",
-        en: "Easy"
-    }, 
-    normal:{
-        es: "Normal",
-        en: "Normal"
-    }, 
-    hard:{
-        es: "Difícil",
-        en: "Hard"
-    }, 
-    veryHard:{
-        es: "Muy difícil",
-        en: "Very hard"
-    },
-} as const;
+    export const difficults = [
+            {
+                es: "Muy fácil",
+                en: "Very easy"
+            }, 
+            {
+                es: "Fácil",
+                en: "Easy"
+            }, 
+            {
+                es: "Normal",
+                en: "Normal"
+            }, 
+            {
+                es: "Difícil",
+                en: "Hard"
+            }, 
+            {
+                es: "Muy difícil",
+                en: "Very hard"
+            }
+     ] as const;

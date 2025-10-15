@@ -2,9 +2,9 @@ import NightModeBtn from "../assets/Options/NightModeBtn"
 import { useEffect } from "react"
 import { homeJson } from "../assets/Json/HomeJson";
 import type {  propsType } from "../App"
-import AddTaskBtn from "../assets/AddTaskBtn";
+import AddTaskBtn from "../assets/Task components/AddTaskBtn";
 import { useState } from "react";
-import TaskInput from "../assets/TaskInput";
+import TaskInput from "../assets/Task components/TaskInput";
 
 
 function Home({lang, setLang, nightMode, setNightMode}: propsType) {
