@@ -1,10 +1,24 @@
 import { Route, Routes } from 'react-router'
 import Login from './pages/Login'
 import Home from './pages/Home'
-import {  useRef, useState } from 'react'
+import {  useRef, useState, type Dispatch, type SetStateAction, type RefObject } from 'react'
 import Layout from './pages/Layout'
 
 export type Lang = "es" | "en"
+
+
+export interface propsType extends nightModeInterface{
+  lang: Lang;
+  setLang?: Dispatch<SetStateAction<Lang>>;
+  fadeLang?: boolean;
+  user:RefObject<HTMLInputElement | null>;
+  toggleFade?: (langParam:Lang) => void;
+}
+
+export interface nightModeInterface{
+    nightMode: boolean;
+    setNightMode?:React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 function App() {
   const [lang, setLang] = useState<Lang>("es");

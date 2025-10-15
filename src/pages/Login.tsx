@@ -1,15 +1,12 @@
 import LangIcon from "../assets/Options/LangIcon"
 import { loginJson } from "../assets/Json/LoginJson"
-import type { Lang } from "../App"
-import type React from "react"
 import LinkBtn from "../assets/Options/LinkBtn"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
+import type { propsType } from "../App"
 
 
-function Login({lang, toggleFade, nightMode, user}:
-  {lang: Lang, toggleFade: (langParam:Lang) => void, nightMode: boolean, user: React.RefObject<HTMLInputElement | null>}
-) {
+function Login({lang, toggleFade, nightMode, user}: propsType) {
   const navigate = useNavigate();
 
   const [hasValue, setHasValue] = useState(false);
@@ -45,8 +42,8 @@ function Login({lang, toggleFade, nightMode, user}:
         <h2 className="text-center text-xl">{loginJson.language[lang]}</h2>
 
         <div>
-          <LangIcon src="/svg/spain.svg" alt="Spanish icon" onClick={()=> toggleFade("es")}/>
-          <LangIcon src="/svg/uk.svg" alt="English icon" onClick={()=> toggleFade("en")}/>
+          <LangIcon src="/svg/spain.svg" alt="Spanish icon" onClick={()=> toggleFade?.("es")}/>
+          <LangIcon src="/svg/uk.svg" alt="English icon" onClick={()=> toggleFade?.("en")}/>
         </div>
 
       </section>

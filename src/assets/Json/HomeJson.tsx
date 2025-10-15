@@ -4,7 +4,7 @@ export const homeJson = {
         en: "Hello "
     },
     addTask:{
-        es: "Añadir una tarea",
+        es: "Añadir tarea",
         en: "Add a task"
     },
     task:{
@@ -20,7 +20,7 @@ export const homeJson = {
         en: "Difficult:"
     },
     add:{
-        es: "Añadir tarea",
+        es: "Añadir",
         en: "Add task"
     },
     taskExample:{

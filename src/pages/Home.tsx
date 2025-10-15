@@ -1,15 +1,14 @@
 import NightModeBtn from "../assets/Options/NightModeBtn"
-import React, { useEffect, type RefObject } from "react"
+import { useEffect } from "react"
 import { homeJson } from "../assets/Json/HomeJson";
-import type { Lang } from "../App"
+import type {  propsType } from "../App"
 import AddTaskBtn from "../assets/AddTaskBtn";
-import { useState, type Dispatch, type SetStateAction} from "react";
+import { useState } from "react";
 import TaskInput from "../assets/TaskInput";
 
 
-function Home({lang, setLang, nightMode, setNightMode}:
-  {lang:Lang, setLang:Dispatch<SetStateAction<Lang>>, nightMode:boolean, setNightMode:React.Dispatch<React.SetStateAction<boolean>>, user:RefObject<HTMLInputElement | null>}
-) {
+function Home({lang, setLang, nightMode, setNightMode}: propsType) {
+
   const username =  localStorage.getItem("username");
   const [addTask, setAddtask] = useState<boolean>(false)
 
@@ -20,7 +19,7 @@ function Home({lang, setLang, nightMode, setNightMode}:
   useEffect(()=>{
       const actualLanguage = localStorage.getItem("lang");
 
-        (actualLanguage == "es" || actualLanguage == "en" && setLang(actualLanguage))
+        (actualLanguage == "es" || actualLanguage == "en" && setLang?.(actualLanguage))
 
   }, [])
 
@@ -30,7 +29,7 @@ function Home({lang, setLang, nightMode, setNightMode}:
           <h1>{homeJson.hello[lang] + username}</h1>
       </div>
 
-      <section className="h-100 flex flex-col items-center justify-center border-3 m-8">
+      <section className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
         {addTask ?
         (<TaskInput {...{lang}}/>):
         (<AddTaskBtn {...{lang, addTask, addTaskFun}}/>)}
