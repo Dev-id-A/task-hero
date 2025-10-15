@@ -30,6 +30,10 @@ export const homeJson = {
     complete:{
         es: "Completar",
         en: "Complete"
+    },
+    alert:{
+        es: "El número debe estar entre 1 y 1000.",
+        en: "The number should be between 1 and 1000."
     }
     } as const;
 
