@@ -1,29 +1,30 @@
 import NightModeBtn from "../assets/Options/NightModeBtn"
-import { useEffect, type Dispatch, type SetStateAction } from "react"
-import { difficults, homeJson } from "../assets/Json/HomeJson";
-import type {  Lang, propsType } from "../App"
+import { useEffect} from "react"
+import { homeJson } from "../assets/Json/HomeJson";
+import type { propsType } from "../App"
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
 import { useState } from "react";
 import TaskInput from "../assets/Task components/TaskInput";
 import TaskToDo from "../assets/Task components/TaskToDo";
 
-export interface taskInterface {
-  lang: Lang
-  taskInput?: string
-  setTaskInput?: Dispatch<SetStateAction<string>>
-  timesInput?: number
-  setTimesInput?: Dispatch<SetStateAction<number>>
-  difficult?: string
-  setDifficult?: Dispatch<SetStateAction<string>>
+
+export interface newTaskInterface{
+  task:string;
+  times: number;
+  difficult: string; 
 }
 
+let newtask: newTaskInterface = {
+  task: "",
+  times: 1,
+  difficult: ""
+}
+
+let allTask:newTaskInterface[] = [{task:"Lavar los platos", times: 2, difficult: "Fácil"}]
 
 function Home({lang, setLang, nightMode, setNightMode}: propsType) {
 
-  //Task instructions
-  const [taskInput, setTaskInput] = useState<string>("");
-  const [timesInput, setTimesInput] = useState<number>(1)
-  const [difficult, setDifficult] = useState<string>(difficults[0][lang]);
+  const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>(allTask)
 
   const username =  localStorage.getItem("username");
   const [addTask, setAddtask] = useState<boolean>(false)
@@ -46,12 +47,12 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
       </div>
 
       <section className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
-        <TaskToDo {...{lang, taskInput, timesInput, difficult}}/>
+        <TaskToDo {...{lang, allTaskState}}/>
       </section>
 
       <section className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
         {addTask ?
-        (<TaskInput {...{lang, setTaskInput, setTimesInput, setDifficult}}/>):
+        (<TaskInput {...{lang, setAllTaskState}}/>):
         (<AddTaskBtn {...{addTask, addTaskFun}}/>)}
       </section>
 
