@@ -1,9 +1,8 @@
 import NightModeBtn from "../assets/Options/NightModeBtn"
-import { useEffect} from "react"
+import { useEffect, useState} from "react"
 import { homeJson } from "../assets/Json/HomeJson";
 import type { propsType } from "../App"
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
-import { useState } from "react";
 import TaskInput from "../assets/Task components/TaskInput";
 import TaskToDo from "../assets/Task components/TaskToDo";
 
@@ -20,18 +19,15 @@ let newtask: newTaskInterface = {
   difficult: ""
 }
 
-let allTask:newTaskInterface[] = [{task:"Lavar los platos", times: 2, difficult: "Fácil"}]
+let allTask: newTaskInterface[] = [{task:"Lavar los platos", times: 2, difficult: "Fácil"}, {task:"Saludar", times: 1, difficult: "Muy Fácil"}]
 
 function Home({lang, setLang, nightMode, setNightMode}: propsType) {
 
   const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>(allTask)
 
   const username =  localStorage.getItem("username");
-  const [addTask, setAddtask] = useState<boolean>(false)
+  const [addTask, setAddTask] = useState<boolean>(false)
 
-  const addTaskFun = () =>{
-    setAddtask(true)
-  }
 
   useEffect(()=>{
       const actualLanguage = localStorage.getItem("lang");
@@ -46,14 +42,18 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
           <h1>{homeJson.hello[lang] + username}</h1>
       </div>
 
-      <section className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
-        <TaskToDo {...{lang, allTaskState}}/>
-      </section>
+      
+        {allTaskState.map((object, i)=>{
+          return <section key={i + "section"} className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
+                    <TaskToDo lang={lang} object={object} key={i} />
+                  </section>
+        })}
+     
 
       <section className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
         {addTask ?
         (<TaskInput {...{lang, setAllTaskState}}/>):
-        (<AddTaskBtn {...{addTask, addTaskFun}}/>)}
+        (<AddTaskBtn {...{addTask, setAddTask}}/>)}
       </section>
 
 
