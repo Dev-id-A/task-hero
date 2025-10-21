@@ -23,6 +23,11 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
     setAllTaskState((prev)=> prev.filter((task)=> task.id !== id))
   }
 
+  const reduceTimes = (id: number) => {
+    setAllTaskState((prev)=> prev.map((task)=> task.id === id ?
+      {...task, times: task.times > 1 ? task.times--:1}:task))
+  } 
+
   const username =  localStorage.getItem("username");
   const [addTask, setAddTask] = useState<boolean>(false);
 
@@ -43,7 +48,7 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
       
         {allTaskState.map((object, i)=>{
           return <section key={i + "section"} className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
-                    <TaskToDo key={i} {...{lang, object, completeTask}} />
+                    <TaskToDo key={i} {...{lang, object, completeTask, reduceTimes}} />
                   </section>
         })}
      
