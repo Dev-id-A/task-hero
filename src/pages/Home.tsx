@@ -11,14 +11,17 @@ export interface newTaskInterface{
   task: string;
   times: number;
   difficult: string; 
+  id: number
 }
 
 
-let allTask: newTaskInterface[] = [{task:"Lavar los platos", times: 2, difficult: "Fácil"}, {task:"Saludar", times: 1, difficult: "Muy Fácil"}]
-
 function Home({lang, setLang, nightMode, setNightMode}: propsType) {
 
-  const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>(allTask)
+  const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([])
+
+  const completeTask = (id: number)=>{
+    setAllTaskState((prev)=> prev.filter((task)=> task.id !== id))
+  }
 
   const username =  localStorage.getItem("username");
   const [addTask, setAddTask] = useState<boolean>(false);
@@ -40,7 +43,7 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
       
         {allTaskState.map((object, i)=>{
           return <section key={i + "section"} className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
-                    <TaskToDo lang={lang} object={object} key={i} />
+                    <TaskToDo key={i} {...{lang, object, completeTask}} />
                   </section>
         })}
      

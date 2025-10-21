@@ -12,7 +12,8 @@ function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
   const [currentTask, setCurrentTask] = useState<newTaskInterface>({
     task: "",
     times: 1,
-    difficult: difficults[0][lang]
+    difficult: difficults[0][lang],
+    id: Date.now()
   });
 
   const createTask = () => {
@@ -24,7 +25,8 @@ function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
     setCurrentTask({
       task: "",
       times: 1,
-      difficult: difficults[0][lang]
+      difficult: difficults[0][lang],
+      id: Date.now()
     })
     setAddTask(false);
   }
