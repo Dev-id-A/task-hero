@@ -17,7 +17,9 @@ export interface newTaskInterface{
 
 function Home({lang, setLang, nightMode, setNightMode}: propsType) {
 
-  const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([])
+  const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([]);
+  const username =  localStorage.getItem("username");
+  const [addTask, setAddTask] = useState<boolean>(false);
 
   const completeTask = (id: number)=>{
     setAllTaskState((prev)=> prev.filter((task)=> task.id !== id))
@@ -25,12 +27,12 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
 
   const reduceTimes = (id: number) => {
     setAllTaskState((prev)=> prev.map((task)=> task.id === id ?
-      {...task, times: task.times > 1 ? task.times--:1}:task))
+      {...task, 
+        times: task.times > 1 ? task.times - 1
+        :(completeTask(task.id), task.times)
+      }
+      :task))
   } 
-
-  const username =  localStorage.getItem("username");
-  const [addTask, setAddTask] = useState<boolean>(false);
-
 
   useEffect(()=>{
       const actualLanguage = localStorage.getItem("lang");
@@ -48,7 +50,7 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
       
         {allTaskState.map((object, i)=>{
           return <section key={i + "section"} className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
-                    <TaskToDo key={i} {...{lang, object, completeTask, reduceTimes}} />
+                    <TaskToDo key={i} {...{lang, object, reduceTimes}} />
                   </section>
         })}
      
