@@ -8,16 +8,11 @@ import TaskToDo from "../assets/Task components/TaskToDo";
 
 
 export interface newTaskInterface{
-  task:string;
+  task: string;
   times: number;
   difficult: string; 
 }
 
-let newTask: newTaskInterface = {
-  task: "",
-  times: 1,
-  difficult: ""
-}
 
 let allTask: newTaskInterface[] = [{task:"Lavar los platos", times: 2, difficult: "Fácil"}, {task:"Saludar", times: 1, difficult: "Muy Fácil"}]
 
@@ -52,7 +47,7 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
 
       <section className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
         {addTask ?
-        (<TaskInput {...{lang, setAllTaskState}}/>):
+        (<TaskInput {...{lang, allTaskState, setAllTaskState, setAddTask}}/>):
         (<AddTaskBtn {...{addTask, setAddTask}}/>)}
       </section>
 

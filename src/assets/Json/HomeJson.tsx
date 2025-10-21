@@ -34,6 +34,10 @@ export const homeJson = {
     alert:{
         es: "El número debe estar entre 1 y 1000.",
         en: "The number should be between 1 and 1000."
+    }, 
+    taskAlert:{
+        es: "Debes crear una tarea.",
+        en: "You should create a task."
     }
     } as const;
 
