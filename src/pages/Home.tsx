@@ -13,7 +13,7 @@ export interface newTaskInterface{
   difficult: string; 
 }
 
-let newtask: newTaskInterface = {
+let newTask: newTaskInterface = {
   task: "",
   times: 1,
   difficult: ""
@@ -26,7 +26,7 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
   const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>(allTask)
 
   const username =  localStorage.getItem("username");
-  const [addTask, setAddTask] = useState<boolean>(false)
+  const [addTask, setAddTask] = useState<boolean>(false);
 
 
   useEffect(()=>{
