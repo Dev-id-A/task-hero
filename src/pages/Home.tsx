@@ -5,6 +5,7 @@ import type { propsType } from "../App"
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
 import TaskInput from "../assets/Task components/TaskInput";
 import TaskToDo from "../assets/Task components/TaskToDo";
+import XPBar from "../assets/XPBar/XPBar";
 
 
 export interface newTaskInterface{
@@ -43,9 +44,13 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
 
   return (
     <main className="min-h-screen w-full">
-      <div className="text-center bg-blue-500 text-3xl w-full h-10">
+      <section className="text-center bg-blue-500 text-3xl w-full">
           <h1>{homeJson.hello[lang] + username}</h1>
-      </div>
+          <div className="flex flex-row">
+            <h1 className="w-1/2">LVL 1</h1>
+            <XPBar />
+          </div>
+      </section>
 
       
         {allTaskState.map((object, i)=>{
