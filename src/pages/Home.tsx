@@ -1,7 +1,7 @@
 import NightModeBtn from "../assets/Options/NightModeBtn"
 import { useEffect, useState} from "react"
 import { homeJson } from "../assets/Json/HomeJson";
-import type { propsType } from "../assets/Types&Interfaces"; 
+import type { levelInterface, propsType } from "../assets/Types&Interfaces"; 
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
 import TaskInput from "../assets/Task components/TaskInput";
 import TaskToDo from "../assets/Task components/TaskToDo";
@@ -16,11 +16,15 @@ export interface newTaskInterface{
 }
 
 
-function Home({lang, setLang, nightMode, setNightMode}: propsType) {
+function Home({lang, setLang, nightMode, setNightMode, level, setLevel, actualXP, setActualXP, maxXP, setMaxXP}
+  : propsType & levelInterface) {
 
   const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([]);
   const username =  localStorage.getItem("username");
   const [addTask, setAddTask] = useState<boolean>(false);
+  const [percentage, setPercentage] = useState<number>(0)   
+
+  useEffect(() => setPercentage(actualXP / maxXP * 100),[actualXP])
 
   const completeTask = (id: number)=>{
     setAllTaskState((prev)=> prev.filter((task)=> task.id !== id))
@@ -47,8 +51,8 @@ function Home({lang, setLang, nightMode, setNightMode}: propsType) {
       <section className="text-center bg-blue-500 text-3xl w-full">
           <h1>{homeJson.hello[lang] + username}</h1>
           <div className="flex flex-row">
-            <h1 className="w-1/2">LVL 1</h1>
-            <XPBar />
+            <h1 className="w-1/2">LVL {level}</h1>
+            <XPBar {...{percentage}}/>
           </div>
       </section>
 

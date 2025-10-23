@@ -19,7 +19,7 @@ export interface levelInterface{
   level: number;
   setLevel: Dispatch<SetStateAction<number>>;
   actualXP: number;
-  setactualXP: Dispatch<SetStateAction<number>>;
+  setActualXP: Dispatch<SetStateAction<number>>;
   maxXP: number;
   setMaxXP: Dispatch<SetStateAction<number>>;
 }
