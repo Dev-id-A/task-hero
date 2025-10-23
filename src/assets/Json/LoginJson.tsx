@@ -1,4 +1,6 @@
-export const loginJson = {
+export const 
+
+loginJson = {
     welcome:{
         es: "Bienvenido",
         en: "Welcome"

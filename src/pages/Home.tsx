@@ -1,7 +1,7 @@
 import NightModeBtn from "../assets/Options/NightModeBtn"
 import { useEffect, useState} from "react"
 import { homeJson } from "../assets/Json/HomeJson";
-import type { propsType } from "../App"
+import type { propsType } from "../assets/Types&Interfaces"; 
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
 import TaskInput from "../assets/Task components/TaskInput";
 import TaskToDo from "../assets/Task components/TaskToDo";

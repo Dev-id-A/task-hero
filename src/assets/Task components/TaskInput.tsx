@@ -1,5 +1,5 @@
 import { useState, type Dispatch, type SetStateAction } from "react"
-import type { Lang } from "../../App"
+import type { Lang } from "../Types&Interfaces" 
 import { homeJson, difficults } from "../Json/HomeJson"
 import TaskDiv from "./TaskDiv"
 import type { newTaskInterface } from "../../pages/Home"
