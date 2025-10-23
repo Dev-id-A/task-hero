@@ -1,7 +1,7 @@
 import TaskDiv from "./TaskDiv"
 import { homeJson } from "../Json/HomeJson"
 import type { newTaskInterface } from "../../pages/Home"
-import type { Lang } from "../../App"
+import type { Lang } from "../Types&Interfaces" 
 
 function TaskToDo({lang, object, reduceTimes}:{lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void}) {
 

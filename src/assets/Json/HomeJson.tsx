@@ -19,6 +19,10 @@ export const homeJson = {
         es: "Dificultad:",
         en: "Difficult:"
     },
+    exp:{
+        es: "Experiencia:",
+        en: "Experience:"
+    },
     add:{
         es: "Añadir",
         en: "Add task"
