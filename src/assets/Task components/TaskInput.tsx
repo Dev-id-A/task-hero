@@ -12,9 +12,17 @@ function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
   const [currentTask, setCurrentTask] = useState<newTaskInterface>({
     task: "",
     times: 1,
-    difficult: difficults[0][lang],
+    difficult: difficults[0].en,
     id: Date.now()
   });
+
+  const experience = {
+    "very easy": 10,
+    "easy": 25,
+    "normal": 50,
+    "hard": 100,
+    "very hard": 150
+  };
 
   const createTask = () => {
     if(currentTask.task == ""){
@@ -57,12 +65,12 @@ function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
       children={<select className="w-full text-center" name="difficult" id="select-difficult" 
       onChange={(e)=>setCurrentTask({...currentTask, difficult: e.target.value}) }>
           {difficults.map((mode)=>{
-            return <option key={mode[lang]} value={mode[lang]}>{mode[lang]}</option>
+            return <option key={mode.en} value={mode.en}>{mode[lang]}</option>
           })}
         </select>} />
 
       <TaskDiv title={homeJson.exp[lang]} divClass="flex flex-row items-center gap-1" 
-      children={<h3>10XP</h3>}/>
+      children={<h3>{experience[currentTask.difficult.toLowerCase() as keyof typeof experience]} XP</h3>}/>
 
       <button className="border-1 p-1 bg-green-300 cursor-pointer mx-10" onClick={()=> createTask()}>{homeJson.add[lang]}</button>
     </div>
