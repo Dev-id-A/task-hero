@@ -3,6 +3,7 @@ import type { Lang } from "../Types&Interfaces"
 import { homeJson, difficults } from "../Json/HomeJson"
 import TaskDiv from "./TaskDiv"
 import type { newTaskInterface } from "../../pages/Home"
+import XBtn from "../Options/XBtn"
 
 function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
   {lang:Lang , allTaskState:newTaskInterface[], 
@@ -50,7 +51,12 @@ function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
   }
 
   return (
-    <div className="size-full flex flex-col -center justify-center gap-8 px-5 text-center text-xl">
+    <div className="size-full flex flex-col justify-center gap-5 px-5 text-center text-xl">
+
+      <div className="flex justify-end">
+        <XBtn onclick={()=> setAddTask(false)}/>
+      </div>
+
       <h2 className="text-3xl">{homeJson.addTask[lang]}</h2>
 
       <TaskDiv title={homeJson.task[lang]} divClass="flex flex-col gap-1" 
