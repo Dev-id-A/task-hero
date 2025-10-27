@@ -76,7 +76,7 @@ function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
         </select>} />
 
       <TaskDiv title={homeJson.exp[lang]} divClass="flex flex-row items-center gap-1" 
-      children={<h3>{currentTask.exp} XP</h3>}/>
+      children={<h3>{currentTask.exp} <span className="text-blue-500 font-bold">XP</span></h3>}/>
 
       <button className="border-1 p-1 bg-green-300 cursor-pointer mx-10" onClick={()=> createTask()}>{homeJson.add[lang]}</button>
     </div>

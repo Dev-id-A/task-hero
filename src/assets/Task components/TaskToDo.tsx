@@ -17,6 +17,9 @@ function TaskToDo({lang, object, reduceTimes}:{lang:Lang, object : newTaskInterf
       <TaskDiv title={homeJson.difficult[lang]} divClass="flex flex-row self-center gap-2" 
       children={object.difficult} />
 
+      <TaskDiv title={homeJson.exp[lang]} divClass="flex flex-row self-center gap-2" 
+      children={<h3>{object.exp} <span className="text-blue-500 font-bold">XP</span></h3>} />
+
       <button className="border-1 p-1 bg-green-300 cursor-pointer mx-10" 
       onClick={()=>reduceTimes(object.id)}>
         {homeJson.complete[lang]}</button>
