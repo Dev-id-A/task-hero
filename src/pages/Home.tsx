@@ -13,6 +13,7 @@ export interface newTaskInterface{
   times: number;
   difficult: string; 
   id: number
+  exp: number
 }
 
 
