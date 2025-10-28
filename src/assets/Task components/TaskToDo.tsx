@@ -5,12 +5,14 @@ import type { newTaskInterface } from "../../pages/Home"
 import type { alertWindowInterface, Lang } from "../Types&Interfaces" 
 import { useEffect } from "react"
 
-function TaskToDo({lang, object, reduceTimes, completeTask, setAlertWindow, eraseTaskState, setEraseTaskState}:
-  {lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void, completeTask:(id:number)=>void} & alertWindowInterface ) {
+function TaskToDo({lang, object, reduceTimes, completeTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}:
+  {lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void, completeTask:(id:number)=>void, taskToErase: React.RefObject<number | null> } 
+  & alertWindowInterface ) {
 
-    useEffect(()=>{if (eraseTaskState) {
+    useEffect(()=>{if (eraseTaskState && taskToErase.current === object.id) {
       completeTask(object.id);
       setEraseTaskState(false);
+      taskToErase.current = null;
     }
     }, [eraseTaskState])
 
@@ -18,7 +20,10 @@ function TaskToDo({lang, object, reduceTimes, completeTask, setAlertWindow, eras
   return (
     <section className="size-full flex flex-col justify-center gap-5 px-5 text-center text-2xl">
 
-      <XBtn onclick={()=>setAlertWindow(true)} />
+      <XBtn onclick={()=>{
+        setAlertWindow(true);
+        taskToErase.current = object.id
+      }} />
 
         <TaskDiv title={homeJson.task[lang]} divClass="flex flex-col gap-1" 
       children={object.task} />

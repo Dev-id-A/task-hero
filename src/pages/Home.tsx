@@ -1,5 +1,5 @@
 import NightModeBtn from "../assets/Options/NightModeBtn"
-import { useEffect, useState} from "react"
+import { useEffect, useRef, useState} from "react"
 import { homeJson } from "../assets/Json/HomeJson";
 import type { levelInterface, propsType } from "../assets/Types&Interfaces"; 
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
@@ -25,9 +25,10 @@ function Home({lang, setLang, nightMode, setNightMode, level, setLevel, actualXP
   const username =  localStorage.getItem("username");
   const [addTask, setAddTask] = useState<boolean>(false);
   const [percentage, setPercentage] = useState<number>(0);
-
+  //Erasing task
   const [alertWindow, setAlertWindow] = useState<boolean>(false);   
-  const [eraseTaskState, setEraseTaskState] = useState<boolean>(false);   
+  const [eraseTaskState, setEraseTaskState] = useState<boolean>(false);
+  const taskToErase = useRef<number | null>(null)
 
   useEffect(() => setPercentage(actualXP / maxXP * 100),[actualXP])
 
@@ -67,7 +68,8 @@ function Home({lang, setLang, nightMode, setNightMode, level, setLevel, actualXP
       
         {allTaskState.map((object, i)=>{
           return <section key={i + "section"} className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
-                    <TaskToDo key={i} {...{lang, object, reduceTimes, completeTask, setAlertWindow, eraseTaskState, setEraseTaskState}} />
+                    <TaskToDo key={i} 
+                    {...{lang, object, reduceTimes, completeTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
                   </section>
         })}
      
