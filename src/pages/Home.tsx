@@ -5,6 +5,7 @@ import type { levelInterface, propsType } from "../assets/Types&Interfaces";
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
 import TaskInput from "../assets/Task components/TaskInput";
 import TaskToDo from "../assets/Task components/TaskToDo";
+import AlertWindow from "../assets/Windows/AlertWindow";
 import XPBar from "../assets/XPBar/XPBar";
 
 
@@ -54,6 +55,9 @@ function Home({lang, setLang, nightMode, setNightMode, level, setLevel, actualXP
 
   return (
     <main className="min-h-screen w-full">
+
+      <AlertWindow {...{lang}}/>
+
       <section className="text-center bg-blue-500 text-3xl w-full">
           <h1>{homeJson.hello[lang] + username}</h1>
           <div className="flex flex-row">
