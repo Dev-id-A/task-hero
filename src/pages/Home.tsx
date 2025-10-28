@@ -24,14 +24,12 @@ function Home({lang, setLang, nightMode, setNightMode, level, setLevel, actualXP
   const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([]);
   const username =  localStorage.getItem("username");
   const [addTask, setAddTask] = useState<boolean>(false);
-  const [percentage, setPercentage] = useState<number>(0)   
+  const [percentage, setPercentage] = useState<number>(0);
+
+  const [alertWindow, setAlertWindow] = useState<boolean>(false);   
+  const [eraseTaskState, setEraseTaskState] = useState<boolean>(false);   
 
   useEffect(() => setPercentage(actualXP / maxXP * 100),[actualXP])
-
-  //Both would have diferent functionality in the future
-  const eraseTask = (id: number)=>{
-    setAllTaskState((prev)=> prev.filter((task)=> task.id !== id))
-  }
 
   const completeTask = (id: number)=>{
     setAllTaskState((prev)=> prev.filter((task)=> task.id !== id))
@@ -56,7 +54,7 @@ function Home({lang, setLang, nightMode, setNightMode, level, setLevel, actualXP
   return (
     <main className="min-h-screen w-full">
 
-      <AlertWindow {...{lang}}/>
+      <AlertWindow {...{lang, alertWindow, setAlertWindow, setEraseTaskState}}/>
 
       <section className="text-center bg-blue-500 text-3xl w-full">
           <h1>{homeJson.hello[lang] + username}</h1>
@@ -69,7 +67,7 @@ function Home({lang, setLang, nightMode, setNightMode, level, setLevel, actualXP
       
         {allTaskState.map((object, i)=>{
           return <section key={i + "section"} className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
-                    <TaskToDo key={i} {...{lang, object, reduceTimes, eraseTask}} />
+                    <TaskToDo key={i} {...{lang, object, reduceTimes, completeTask, setAlertWindow, eraseTaskState, setEraseTaskState}} />
                   </section>
         })}
      

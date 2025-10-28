@@ -2,16 +2,23 @@ import TaskDiv from "./TaskDiv"
 import XBtn from "../Options/XBtn"
 import { homeJson } from "../Json/HomeJson"
 import type { newTaskInterface } from "../../pages/Home"
-import type { Lang } from "../Types&Interfaces" 
+import type { alertWindowInterface, Lang } from "../Types&Interfaces" 
+import { useEffect } from "react"
 
-function TaskToDo({lang, object, reduceTimes, eraseTask}:
-  {lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void, eraseTask:(id:number)=>void}) {
+function TaskToDo({lang, object, reduceTimes, completeTask, setAlertWindow, eraseTaskState, setEraseTaskState}:
+  {lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void, completeTask:(id:number)=>void} & alertWindowInterface ) {
+
+    useEffect(()=>{if (eraseTaskState) {
+      completeTask(object.id);
+      setEraseTaskState(false);
+    }
+    }, [eraseTaskState])
 
 
   return (
     <section className="size-full flex flex-col justify-center gap-5 px-5 text-center text-2xl">
 
-      <XBtn onclick={()=>eraseTask(object.id)} />
+      <XBtn onclick={()=>setAlertWindow(true)} />
 
         <TaskDiv title={homeJson.task[lang]} divClass="flex flex-col gap-1" 
       children={object.task} />
