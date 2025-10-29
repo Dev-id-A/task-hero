@@ -15,15 +15,6 @@ export interface nightModeInterface{
     setNightMode?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface levelInterface{
-  level: number;
-  setLevel: Dispatch<SetStateAction<number>>;
-  actualXP: number;
-  setActualXP: Dispatch<SetStateAction<number>>;
-  maxXP: number;
-  setMaxXP: Dispatch<SetStateAction<number>>;
-}
-
 export interface alertWindowInterface{
   alertWindow?: boolean;
   setAlertWindow: React.Dispatch<React.SetStateAction<boolean>>;

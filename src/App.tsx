@@ -11,9 +11,7 @@ function App() {
   const [fadeLang, setFadeLang] = useState(false);
   const [nightMode, setNightMode] = useState(false);
   const user = useRef<HTMLInputElement | null>(null);
-  const [level, setLevel] = useState<number>(1);
-  const [actualXP, setActualXP] = useState<number>(25);
-  const [maxXP, setMaxXP] = useState<number>(100);
+
 
 
   const toggleFade = (langParam:Lang) => {
@@ -32,8 +30,7 @@ function App() {
         <Route path="/" element={<Layout {...{fadeLang}} />} >
 
           <Route index element={<Login {...{lang, toggleFade, nightMode, user}} />}></Route>
-          <Route path="home" element={<Home {...{lang, setLang, nightMode, setNightMode, user}} 
-          {...{level, setLevel, actualXP, setActualXP, maxXP, setMaxXP}}/>} ></Route>
+          <Route path="home" element={<Home {...{lang, setLang, nightMode, setNightMode, user}} />} ></Route>
 
         </Route>
         

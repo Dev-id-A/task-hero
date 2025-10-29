@@ -1,7 +1,7 @@
 import NightModeBtn from "../assets/Options/NightModeBtn"
 import { useEffect, useRef, useState} from "react"
 import { homeJson } from "../assets/Json/HomeJson";
-import type { levelInterface, propsType } from "../assets/Types&Interfaces"; 
+import type { propsType } from "../assets/Types&Interfaces"; 
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
 import TaskInput from "../assets/Task components/TaskInput";
 import TaskToDo from "../assets/Task components/TaskToDo";
@@ -18,24 +18,33 @@ export interface newTaskInterface{
 }
 
 
-function Home({lang, setLang, nightMode, setNightMode, level, setLevel, actualXP, setActualXP, maxXP, setMaxXP}
-  : propsType & levelInterface) {
+function Home({lang, setLang, nightMode, setNightMode}
+  : propsType) {
 
   const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([]);
   const username =  localStorage.getItem("username");
   const [addTask, setAddTask] = useState<boolean>(false);
+  
+  //Leveling states
   const [percentage, setPercentage] = useState<number>(0);
+  const [level, setLevel] = useState<number>(1);
+  const [actualXP, setActualXP] = useState<number>(0);
+  const [maxXP, setMaxXP] = useState<number>(100);
+
   //Erasing task
   const [alertWindow, setAlertWindow] = useState<boolean>(false);   
   const [eraseTaskState, setEraseTaskState] = useState<boolean>(false);
   const taskToErase = useRef<number | null>(null)
 
-  useEffect(() => setPercentage(actualXP / maxXP * 100),[actualXP])
+  useEffect(() => setPercentage(actualXP / maxXP * 100),[actualXP]);
+
 
   const eraseTask = (id: number) => setAllTaskState((prev)=> prev.filter((task)=> task.id !== id));
-
   const completeTask = (id: number)=>{
-    setAllTaskState((prev)=> prev.filter((task)=> task.id !== id));
+    setAllTaskState((prev)=> prev.filter((task)=> {
+      setActualXP((prev)=>prev + task.exp)
+      task.id !== id;
+    }));
   }
 
   const reduceTimes = (id: number) => {
