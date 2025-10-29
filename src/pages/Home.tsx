@@ -30,6 +30,7 @@ function Home({lang, setLang, nightMode, setNightMode}
   const [level, setLevel] = useState<number>(1);
   const [actualXP, setActualXP] = useState<number>(0);
   const [maxXP, setMaxXP] = useState<number>(100);
+  const [eraseXPBar, setEraseXPBar] = useState<boolean>(false);
 
   //Erasing task
   const [alertWindow, setAlertWindow] = useState<boolean>(false);   
@@ -37,12 +38,29 @@ function Home({lang, setLang, nightMode, setNightMode}
   const taskToErase = useRef<number | null>(null)
 
   useEffect(() => {
-    setPercentage(actualXP / maxXP * 100);
     if(actualXP>=maxXP){
-      setLevel(prev=> prev + 1);
-      setActualXP(prev=> prev = actualXP - maxXP);
-      setMaxXP(prev=> Math.ceil(prev * 1.2));
+      setPercentage(100);
+
+        const eraseBar = setTimeout(()=>{
+          setLevel(prev=> prev + 1);
+          setPercentage(0);
+          setEraseXPBar(true);
+        },800)
+
+        const continueBar = setTimeout(()=>{
+          setEraseXPBar(false);
+          setActualXP(prev=> prev = actualXP - maxXP);
+          setMaxXP(prev=> Math.ceil(prev * 1.2));
+          setPercentage(actualXP / maxXP * 100);
+
+      },1600)
+      return ()=>{
+        clearTimeout(eraseBar);
+        clearTimeout(continueBar);
+      }
     }
+    setPercentage(actualXP / maxXP * 100);
+
   },[actualXP]);
 
 
@@ -76,10 +94,10 @@ function Home({lang, setLang, nightMode, setNightMode}
       <AlertWindow {...{lang, alertWindow, setAlertWindow, setEraseTaskState}}/>
 
       <section className="text-center bg-blue-500 text-3xl w-full">
-          <h1>{homeJson.hello[lang] + username}</h1>
-          <div className="flex flex-row">
+          <h1 className="py-1">{homeJson.hello[lang] + username}</h1>
+          <div className="flex flex-row border-t-1 border-blue-600">
             <h1 className="w-1/2">LVL {level}</h1>
-            <XPBar {...{percentage}}/>
+            <XPBar {...{percentage, eraseXPBar}}/>
           </div>
       </section>
       
