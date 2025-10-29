@@ -3,8 +3,11 @@ import { alertJson } from "../Json/AlertsJson"
 import type { alertWindowInterface } from "../Types&Interfaces"
 
 function AlertWindow({lang, alertWindow, setAlertWindow, setEraseTaskState}: {lang:Lang} & alertWindowInterface) {
+
+  
   return (
-    <section className={`h-screen w-screen absolute flex items-center justify-center px-5 ${!alertWindow && "hidden"}`}>
+    <section className={`fixed inset-0 z-50 flex items-center justify-center px-5 bg-black/50 backdrop-blur
+    ${!alertWindow && "hidden"}`}>
       <div className="h-50 bg-blue-200 border-1 flex flex-col items-center justify-center gap-5 font-bold">
         <h2 className="text-xl text-center">{alertJson.eraseTask[lang]}</h2>
 
