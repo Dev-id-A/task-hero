@@ -1,9 +1,19 @@
 import type { Lang } from "../Types&Interfaces"
 import { alertJson } from "../Json/AlertsJson"
 import type { alertWindowInterface } from "../Types&Interfaces"
+import { useEffect } from "react"
 
 function AlertWindow({lang, alertWindow, setAlertWindow, setEraseTaskState}: {lang:Lang} & alertWindowInterface) {
 
+  useEffect(()=>{
+    if(alertWindow){
+      document.body.style.overflow = "hidden";
+    } else{
+      document.body.style.overflow = "";
+    }
+    return()=> {document.body.style.overflow = "";}
+  }
+  ,[alertWindow])
   
   return (
     <section className={`fixed inset-0 z-50 flex items-center justify-center px-5 bg-black/50 backdrop-blur
