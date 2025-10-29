@@ -36,7 +36,14 @@ function Home({lang, setLang, nightMode, setNightMode}
   const [eraseTaskState, setEraseTaskState] = useState<boolean>(false);
   const taskToErase = useRef<number | null>(null)
 
-  useEffect(() => setPercentage(actualXP / maxXP * 100),[actualXP]);
+  useEffect(() => {
+    setPercentage(actualXP / maxXP * 100);
+    if(actualXP>=maxXP){
+      setLevel(prev=> prev + 1);
+      setActualXP(prev=> prev = actualXP - maxXP);
+      setMaxXP(prev=> Math.ceil(prev * 1.2));
+    }
+  },[actualXP]);
 
 
   const eraseTask = (id: number) => setAllTaskState((prev)=> prev.filter((task)=> task.id !== id));
