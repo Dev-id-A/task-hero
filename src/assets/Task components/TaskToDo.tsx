@@ -5,12 +5,12 @@ import type { newTaskInterface } from "../../pages/Home"
 import type { alertWindowInterface, Lang } from "../Types&Interfaces" 
 import { useEffect } from "react"
 
-function TaskToDo({lang, object, reduceTimes, completeTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}:
-  {lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void, completeTask:(id:number)=>void, taskToErase: React.RefObject<number | null> } 
+function TaskToDo({lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}:
+  {lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void, eraseTask:(id:number)=>void, taskToErase: React.RefObject<number | null> } 
   & alertWindowInterface ) {
 
     useEffect(()=>{if (eraseTaskState && taskToErase.current === object.id) {
-      completeTask(object.id);
+      eraseTask(object.id);
       setEraseTaskState(false);
       taskToErase.current = null;
     }

@@ -32,8 +32,10 @@ function Home({lang, setLang, nightMode, setNightMode, level, setLevel, actualXP
 
   useEffect(() => setPercentage(actualXP / maxXP * 100),[actualXP])
 
+  const eraseTask = (id: number) => setAllTaskState((prev)=> prev.filter((task)=> task.id !== id));
+
   const completeTask = (id: number)=>{
-    setAllTaskState((prev)=> prev.filter((task)=> task.id !== id))
+    setAllTaskState((prev)=> prev.filter((task)=> task.id !== id));
   }
 
   const reduceTimes = (id: number) => {
@@ -64,12 +66,11 @@ function Home({lang, setLang, nightMode, setNightMode, level, setLevel, actualXP
             <XPBar {...{percentage}}/>
           </div>
       </section>
-
       
         {allTaskState.map((object, i)=>{
           return <section key={i + "section"} className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
                     <TaskToDo key={i} 
-                    {...{lang, object, reduceTimes, completeTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
+                    {...{lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
                   </section>
         })}
      
