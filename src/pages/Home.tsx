@@ -38,7 +38,7 @@ function Home({lang, setLang, nightMode, setNightMode}
 
   //Windows states
   const [alertWindow, setAlertWindow] = useState<boolean>(false);   
-  const [levelUpWindow, setLevelUpWindow] = useState<boolean>(true);   
+  const [levelUpWindow, setLevelUpWindow] = useState<boolean>(false);   
 
   //Erasing task
   const [eraseTaskState, setEraseTaskState] = useState<boolean>(false);
@@ -59,14 +59,17 @@ function Home({lang, setLang, nightMode, setNightMode}
           setActualXP(prev=> prev = actualXP - maxXP);
           setMaxXP(prev=> Math.ceil(prev * 1.2));
           setPercentage(actualXP / maxXP * 100);
-
+            setTimeout(()=>setLevelUpWindow(true),500)
       },1600)
+
+
       return ()=>{
         clearTimeout(eraseBar);
         clearTimeout(continueBar);
       }
     }
     setPercentage(actualXP / maxXP * 100);
+
 
   },[actualXP]);
 
@@ -98,7 +101,7 @@ function Home({lang, setLang, nightMode, setNightMode}
   return (
     <main className="min-h-screen w-full">
 
-      <LevelUpWindow {...{levelUpWindow, setLevelUpWindow}}/>
+      <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
       <AlertWindow {...{lang, alertWindow, setAlertWindow, setEraseTaskState}}/>
 
       <section className="text-center bg-blue-500 text-3xl w-full">

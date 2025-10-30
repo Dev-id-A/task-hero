@@ -23,6 +23,6 @@ export interface alertWindowInterface{
 }
 
 export interface levelUpWindowInterface{
-  levelUpWindow?: boolean;
+  levelUpWindow: boolean;
   setLevelUpWindow: React.Dispatch<React.SetStateAction<boolean>>;
 }
