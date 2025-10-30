@@ -22,8 +22,11 @@ export interface newTaskInterface{
 function Home({lang, setLang, nightMode, setNightMode}
   : propsType) {
 
-  const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([]);
+  //Local storage
   const username =  localStorage.getItem("username");
+
+  //Task states
+  const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([]);
   const [addTask, setAddTask] = useState<boolean>(false);
   
   //Leveling states
@@ -33,8 +36,11 @@ function Home({lang, setLang, nightMode, setNightMode}
   const [maxXP, setMaxXP] = useState<number>(100);
   const [eraseXPBar, setEraseXPBar] = useState<boolean>(false);
 
-  //Erasing task
+  //Windows states
   const [alertWindow, setAlertWindow] = useState<boolean>(false);   
+  const [levelUpWindow, setLevelUpWindow] = useState<boolean>(true);   
+
+  //Erasing task
   const [eraseTaskState, setEraseTaskState] = useState<boolean>(false);
   const taskToErase = useRef<number | null>(null)
 
@@ -92,7 +98,7 @@ function Home({lang, setLang, nightMode, setNightMode}
   return (
     <main className="min-h-screen w-full">
 
-      <LevelUpWindow />
+      <LevelUpWindow {...{levelUpWindow, setLevelUpWindow}}/>
       <AlertWindow {...{lang, alertWindow, setAlertWindow, setEraseTaskState}}/>
 
       <section className="text-center bg-blue-500 text-3xl w-full">

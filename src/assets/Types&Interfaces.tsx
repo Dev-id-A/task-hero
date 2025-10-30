@@ -21,3 +21,8 @@ export interface alertWindowInterface{
   eraseTaskState?: boolean;
   setEraseTaskState: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export interface levelUpWindowInterface{
+  levelUpWindow?: boolean;
+  setLevelUpWindow: React.Dispatch<React.SetStateAction<boolean>>;
+}
