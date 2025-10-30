@@ -6,6 +6,7 @@ import AddTaskBtn from "../assets/Task components/AddTaskBtn";
 import TaskInput from "../assets/Task components/TaskInput";
 import TaskToDo from "../assets/Task components/TaskToDo";
 import AlertWindow from "../assets/Windows/AlertWindow";
+import LevelUpWindow from "../assets/Windows/LevelUpWindow";
 import XPBar from "../assets/XPBar/XPBar";
 
 
@@ -91,6 +92,7 @@ function Home({lang, setLang, nightMode, setNightMode}
   return (
     <main className="min-h-screen w-full">
 
+      <LevelUpWindow />
       <AlertWindow {...{lang, alertWindow, setAlertWindow, setEraseTaskState}}/>
 
       <section className="text-center bg-blue-500 text-3xl w-full">
