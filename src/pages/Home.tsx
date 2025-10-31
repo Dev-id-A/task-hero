@@ -2,6 +2,7 @@ import NightModeBtn from "../assets/Options/NightModeBtn"
 import { useEffect, useRef, useState} from "react"
 import { homeJson } from "../assets/Json/HomeJson";
 import type { propsType } from "../assets/Types&Interfaces"; 
+import { titlesJson } from "../assets/Json/AlertsJson";
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
 import TaskInput from "../assets/Task components/TaskInput";
 import TaskToDo from "../assets/Task components/TaskToDo";
@@ -42,7 +43,10 @@ function Home({lang, setLang, nightMode, setNightMode}
 
   //Erasing task
   const [eraseTaskState, setEraseTaskState] = useState<boolean>(false);
-  const taskToErase = useRef<number | null>(null)
+  const taskToErase = useRef<number | null>(null);
+
+  //Title state
+  const [showTitle, setShowTitle] = useState<boolean>(false);
 
   useEffect(() => {
     if(actualXP>=maxXP){
@@ -56,8 +60,8 @@ function Home({lang, setLang, nightMode, setNightMode}
 
         const continueBar = setTimeout(()=>{
           setEraseXPBar(false);
-          setActualXP(prev=> prev = actualXP - maxXP);
-          setMaxXP(prev=> Math.ceil(prev + 100));
+          setActualXP(prev => prev = actualXP - maxXP);
+          setMaxXP(prev => Math.ceil(prev + 100));
           setPercentage(actualXP / maxXP * 100);
             setTimeout(()=>setLevelUpWindow(true),500)
       },1600)
@@ -99,28 +103,35 @@ function Home({lang, setLang, nightMode, setNightMode}
   }, [])
 
   return (
-    <main className="min-h-screen w-full">
+    <main className="min-h-screen w-full bg-blue-100">
 
       <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
       <AlertWindow {...{lang, alertWindow, setAlertWindow, setEraseTaskState}}/>
 
       <section className="text-center bg-blue-500 text-3xl w-full">
           <h1 className="py-1">{homeJson.hello[lang] + username}</h1>
-          <div className="flex flex-row border-t-1 border-blue-600">
-            <h1 className="w-1/2">LVL {level}</h1>
-            <XPBar {...{percentage, eraseXPBar}}/>
+          <div className="min-h-10 flex flex-row border-t-1 border-blue-600" onClick={()=> setShowTitle(prev=> !prev)}>
+
+            {showTitle ? 
+            (<h1 className="text-center w-full">{titlesJson[level-1][lang]}</h1>):
+            (<>
+              <h1 className="w-1/2">LVL {level}</h1>
+              <XPBar {...{percentage, eraseXPBar}}/>
+            </>)
+            }
+            
           </div>
       </section>
       
         {allTaskState.map((object, i)=>{
-          return <section key={i + "section"} className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
+          return <section key={i + "section"} className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 m-8">
                     <TaskToDo key={i} 
                     {...{lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
                   </section>
         })}
      
 
-      <section className="min-h-100 flex flex-col items-center justify-center border-3 m-8">
+      <section className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 m-8">
         {addTask ?
         (<TaskInput {...{lang, allTaskState, setAllTaskState, setAddTask}}/>):
         (<AddTaskBtn {...{addTask, setAddTask}}/>)}

@@ -18,14 +18,14 @@ function TaskToDo({lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTa
 
 
   return (
-    <section className="size-full flex flex-col justify-center gap-5 px-5 text-center text-2xl">
+    <section className="size-full flex flex-col justify-center gap-5 px-5 py-3 text-center text-xl">
 
       <XBtn onclick={()=>{
         setAlertWindow(true);
         taskToErase.current = object.id
       }} />
 
-        <TaskDiv title={homeJson.task[lang]} divClass="flex flex-col gap-1" 
+        <TaskDiv title={homeJson.task[lang]} divClass="flex flex-col gap-1 text-2xl" 
       children={object.task} />
       
       <TaskDiv title={homeJson.times[lang]} divClass="flex flex-row self-center gap-2" 
