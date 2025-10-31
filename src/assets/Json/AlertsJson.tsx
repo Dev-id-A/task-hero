@@ -19,12 +19,44 @@ export const congratulations = {
 }
 
 export const titlesJson = [
-    {
-        es: "Nadie",
-        en: "Nobody"
-    },
-    {
-        es: "Vago",
-        en: "Lazy"
-    }
+  {
+    es: "Nadie",
+    en: "Nobody"
+  },
+  {
+    es: "Vago",
+    en: "Lazy"
+  },
+  {
+    es: "Vago con ganas",
+    en: "Lazy with ambition"
+  },
+  {
+    es: "Vago aplicado",
+    en: "Diligent slacker"
+  },
+  {
+    es: "El mejor vago",
+    en: "The best slacker"
+  },
+  {
+    es: "Perezoso",
+    en: "Sluggish"
+  },
+  {
+    es: "Perezoso con ganas",
+    en: "Sluggish but trying"
+  },
+  {
+    es: "Nada perezoso",
+    en: "Not lazy at all"
+  },
+  {
+    es: "Relajado",
+    en: "Relaxed"
+  },
+  {
+    es: "Relajado visionario",
+    en: "Relaxed visionary"
+  }
 ]

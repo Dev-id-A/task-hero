@@ -57,7 +57,7 @@ function Home({lang, setLang, nightMode, setNightMode}
         const continueBar = setTimeout(()=>{
           setEraseXPBar(false);
           setActualXP(prev=> prev = actualXP - maxXP);
-          setMaxXP(prev=> Math.ceil(prev * 1.2));
+          setMaxXP(prev=> Math.ceil(prev + 100));
           setPercentage(actualXP / maxXP * 100);
             setTimeout(()=>setLevelUpWindow(true),500)
       },1600)
