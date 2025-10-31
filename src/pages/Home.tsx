@@ -60,7 +60,7 @@ function Home({lang, setLang, nightMode, setNightMode}
 
         const continueBar = setTimeout(()=>{
           setEraseXPBar(false);
-          setActualXP(prev => prev = actualXP - maxXP);
+          setActualXP(prev => prev = prev - maxXP);
           setMaxXP(prev => Math.ceil(prev + 100));
           setPercentage(actualXP / maxXP * 100);
             setTimeout(()=>setLevelUpWindow(true),500)
@@ -108,20 +108,23 @@ function Home({lang, setLang, nightMode, setNightMode}
       <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
       <AlertWindow {...{lang, alertWindow, setAlertWindow, setEraseTaskState}}/>
 
-      <section className="text-center bg-blue-500 text-3xl w-full">
-          <h1 className="py-1">{homeJson.hello[lang] + username}</h1>
-          <div className="min-h-10 flex flex-row border-t-1 border-blue-600" onClick={()=> setShowTitle(prev=> !prev)}>
+          <section className="min-h-10 text-center bg-blue-500 text-3xl w-full flex flex-row border-t-1 border-blue-600">
 
+            <div className="w-full flex flex-row" onClick={()=> setShowTitle(prev=> !prev)}>
             {showTitle ? 
             (<h1 className="text-center w-full">{titlesJson[level-1][lang]}</h1>):
             (<>
-              <h1 className="w-1/2">LVL {level}</h1>
+              <h1 className="min-w-20">LVL {level}</h1>
               <XPBar {...{percentage, eraseXPBar}}/>
             </>)
             }
-            
-          </div>
-      </section>
+            </div>
+
+            <button className="h-10 w-18" onClick={()=>console.log("Abriendo menú")}>
+              <img src="/svg/hamburger.svg" alt="Hamburger icon" className="h-full w-full"/>
+            </button>
+
+          </section>
       
         {allTaskState.map((object, i)=>{
           return <section key={i + "section"} className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 m-8">
