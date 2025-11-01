@@ -1,6 +1,6 @@
 import NightModeBtn from "../assets/Options/NightModeBtn"
+import Menu from "../assets/Options/Menu";
 import { useEffect, useRef, useState} from "react"
-import { homeJson } from "../assets/Json/HomeJson";
 import type { propsType } from "../assets/Types&Interfaces"; 
 import { titlesJson } from "../assets/Json/AlertsJson";
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
@@ -119,6 +119,8 @@ function Home({lang, setLang, nightMode, setNightMode}
             </>)
             }
             </div>
+
+            <Menu {...{lang, username}}/>
 
             <button className="h-10 w-18" onClick={()=>console.log("Abriendo menú")}>
               <img src="/svg/hamburger.svg" alt="Hamburger icon" className="h-full w-full"/>
