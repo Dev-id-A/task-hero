@@ -123,7 +123,12 @@ function Home({lang, setLang, nightMode, setNightMode}
             }
             </div>
 
-            <Menu {...{lang, username, openMenu, setOpenMenu}}/>
+            <Menu {...{lang, username, openMenu, setOpenMenu}} 
+            children={<>
+              <NightModeBtn {...{nightMode, setNightMode}}/>
+              {/*Testing the page only*/}
+              <button onClick={()=>localStorage.clear()}>Borrar</button>
+              </>}/>
 
             <button className="h-10 w-18" onClick={()=>setOpenMenu(true)}>
               <img src="/svg/hamburger.svg" alt="Hamburger icon" className="h-full w-full"/>
@@ -144,14 +149,6 @@ function Home({lang, setLang, nightMode, setNightMode}
         (<TaskInput {...{lang, allTaskState, setAllTaskState, setAddTask}}/>):
         (<AddTaskBtn {...{addTask, setAddTask}}/>)}
       </section>
-
-
-          {/*Testing the page only*/}
-      <button onClick={()=>localStorage.clear()}>Borrar</button>
-
-          <div className="hidden">
-            <NightModeBtn {...{nightMode, setNightMode}}/>
-          </div>
 
     </main>
           
