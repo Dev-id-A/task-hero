@@ -29,6 +29,9 @@ function Home({lang, setLang, nightMode, setNightMode}
   //Task states
   const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([]);
   const [addTask, setAddTask] = useState<boolean>(false);
+
+  //Menu state
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
   
   //Leveling states
   const [percentage, setPercentage] = useState<number>(0);
@@ -120,9 +123,9 @@ function Home({lang, setLang, nightMode, setNightMode}
             }
             </div>
 
-            <Menu {...{lang, username}}/>
+            <Menu {...{lang, username, openMenu, setOpenMenu}}/>
 
-            <button className="h-10 w-18" onClick={()=>console.log("Abriendo menú")}>
+            <button className="h-10 w-18" onClick={()=>setOpenMenu(true)}>
               <img src="/svg/hamburger.svg" alt="Hamburger icon" className="h-full w-full"/>
             </button>
 

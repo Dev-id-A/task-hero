@@ -2,6 +2,11 @@ import { type Dispatch, type SetStateAction, type RefObject } from 'react'
 
 export type Lang = "es" | "en"
 
+export interface menuInterface{
+  openMenu: boolean,
+  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>
+}
+
 export interface propsType extends nightModeInterface{
   lang: Lang;
   setLang?: Dispatch<SetStateAction<Lang>>;
