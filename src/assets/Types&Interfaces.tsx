@@ -1,10 +1,12 @@
 import { type Dispatch, type SetStateAction, type RefObject } from 'react'
 
-export type Lang = "es" | "en"
+export type Lang = "es" | "en";
+
+export type ReactStateBool = React.Dispatch<React.SetStateAction<boolean>>
 
 export interface menuInterface{
   openMenu: boolean,
-  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>
+  setOpenMenu: ReactStateBool
 }
 
 export interface newTaskInterface{
@@ -25,19 +27,19 @@ export interface propsType extends nightModeInterface{
 
 export interface nightModeInterface{
     nightMode: boolean;
-    setNightMode?: React.Dispatch<React.SetStateAction<boolean>>;
+    setNightMode?: ReactStateBool;
 }
 
 export interface alertWindowInterface{
   alertWindow?: boolean;
-  setAlertWindow: React.Dispatch<React.SetStateAction<boolean>>;
+  setAlertWindow: ReactStateBool;
   eraseTaskState?: boolean;
-  setEraseTaskState: React.Dispatch<React.SetStateAction<boolean>>
+  setEraseTaskState: ReactStateBool
 }
 
 export interface levelUpWindowInterface{
   levelUpWindow: boolean;
-  setLevelUpWindow: React.Dispatch<React.SetStateAction<boolean>>;
+  setLevelUpWindow: ReactStateBool;
 }
 
 export interface NavbarInterface{
@@ -47,7 +49,7 @@ export interface NavbarInterface{
     },
     title:{
         showTitle: boolean,
-        setShowTitle: React.Dispatch<React.SetStateAction<boolean>>
+        setShowTitle: ReactStateBool
     },
     levelOptions:{
         level: number,
@@ -56,10 +58,10 @@ export interface NavbarInterface{
     },
     menu:{
         openMenu: boolean,
-        setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>
+        setOpenMenu: ReactStateBool
     },
     night:{
         nightMode: boolean,
-        setNightMode: React.Dispatch<React.SetStateAction<boolean>> | undefined
+        setNightMode: ReactStateBool | undefined
     }
 }
