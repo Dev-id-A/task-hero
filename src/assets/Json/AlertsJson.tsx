@@ -14,7 +14,7 @@ export const alertJson={
 }
 
 export const congratulations = {
-    es: "Felicidades, has subido a:",
+    es: "Felicidades, has subido de nivel a:",
     en: "Congratulations, you level up to:"
 }
 
@@ -58,5 +58,46 @@ export const titlesJson = [
   {
     es: "Relajado visionario",
     en: "Relaxed visionary"
-  }
+  },
+{
+  es: "Tranquilo a secas",
+  en: "Just Chill"
+},
+{
+  es: "Tranquilo ambicioso",
+  en: "Calm but Ambitious"
+},
+{
+  es: "Activo",
+  en: "Active"
+},
+{
+  es: "Activo y dispuesto",
+  en: "Active and Willing"
+},
+{
+  es: "Completamente activado",
+  en: "Fully Energized"
+},
+{
+  es: "Buscador de tareas",
+  en: "Task Seeker"
+},
+{
+  es: "Amante de las tareas",
+  en: "Task Lover"
+},
+{
+  es: "Recadero",
+  en: "Gofer"
+},
+{
+  es: "Solo un recadero",
+  en: "Just an Gofer"
+},
+{
+  es: '"El" recadero',
+  en: '"The" Gofer'
+}
+
 ]

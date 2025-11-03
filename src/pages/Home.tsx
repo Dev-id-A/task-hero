@@ -64,7 +64,7 @@ function Home({lang, setLang, nightMode, setNightMode}
         const continueBar = setTimeout(()=>{
           setEraseXPBar(false);
           setActualXP(prev => prev = prev - maxXP);
-          setMaxXP(prev => Math.ceil(prev + 100));
+          setMaxXP(prev => Math.ceil(prev + 1.2));
           setPercentage(actualXP / maxXP * 100);
             setTimeout(()=>setLevelUpWindow(true),500)
       },1600)
@@ -113,9 +113,9 @@ function Home({lang, setLang, nightMode, setNightMode}
 
           <section className="min-h-10 text-center bg-blue-500 text-3xl w-full flex flex-row border-t-1 border-blue-600">
 
-            <div className="w-full flex flex-row" onClick={()=> setShowTitle(prev=> !prev)}>
+            <div className="w-full flex flex-row items-center" onClick={()=> setShowTitle(prev=> !prev)}>
             {showTitle ? 
-            (<h1 className="text-center w-full">{titlesJson[level-1][lang]}</h1>):
+            (<h1 className="text-center w-full text-2xl font-bold">{titlesJson[level- 1][lang]}</h1>):
             (<>
               <h1 className="min-w-20">LVL {level}</h1>
               <XPBar {...{percentage, eraseXPBar}}/>
