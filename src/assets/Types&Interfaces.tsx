@@ -7,6 +7,14 @@ export interface menuInterface{
   setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+export interface newTaskInterface{
+  task: string;
+  times: number;
+  difficult: string; 
+  id: number
+  exp: number
+}
+
 export interface propsType extends nightModeInterface{
   lang: Lang;
   setLang?: Dispatch<SetStateAction<Lang>>;
@@ -30,4 +38,28 @@ export interface alertWindowInterface{
 export interface levelUpWindowInterface{
   levelUpWindow: boolean;
   setLevelUpWindow: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface NavbarInterface{
+    user:{
+        lang: Lang,
+        username: string | null
+    },
+    title:{
+        showTitle: boolean,
+        setShowTitle: React.Dispatch<React.SetStateAction<boolean>>
+    },
+    levelOptions:{
+        level: number,
+        percentage:number,
+        eraseXPBar: boolean
+    },
+    menu:{
+        openMenu: boolean,
+        setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>
+    },
+    night:{
+        nightMode: boolean,
+        setNightMode: React.Dispatch<React.SetStateAction<boolean>> | undefined
+    }
 }

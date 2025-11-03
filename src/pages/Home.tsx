@@ -1,23 +1,11 @@
-import NightModeBtn from "../assets/Options/NightModeBtn"
-import Menu from "../assets/Options/Menu";
 import { useEffect, useRef, useState} from "react"
-import type { propsType } from "../assets/Types&Interfaces"; 
-import { titlesJson } from "../assets/Json/AlertsJson";
+import type { propsType, newTaskInterface } from "../assets/Types&Interfaces"; 
 import AddTaskBtn from "../assets/Task components/AddTaskBtn";
 import TaskInput from "../assets/Task components/TaskInput";
 import TaskToDo from "../assets/Task components/TaskToDo";
 import AlertWindow from "../assets/Windows/AlertWindow";
 import LevelUpWindow from "../assets/Windows/LevelUpWindow";
-import XPBar from "../assets/XPBar/XPBar";
-
-
-export interface newTaskInterface{
-  task: string;
-  times: number;
-  difficult: string; 
-  id: number
-  exp: number
-}
+import Navbar from "../assets/Home components/Navbar";
 
 
 function Home({lang, setLang, nightMode, setNightMode}
@@ -111,30 +99,8 @@ function Home({lang, setLang, nightMode, setNightMode}
       <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
       <AlertWindow {...{lang, alertWindow, setAlertWindow, setEraseTaskState}}/>
 
-          <section className="min-h-10 text-center bg-blue-500 text-3xl w-full flex flex-row border-t-1 border-blue-600">
-
-            <div className="w-full flex flex-row items-center" onClick={()=> setShowTitle(prev=> !prev)}>
-            {showTitle ? 
-            (<h1 className="text-center w-full text-2xl font-bold">{titlesJson[level- 1][lang]}</h1>):
-            (<>
-              <h1 className="min-w-20">LVL {level}</h1>
-              <XPBar {...{percentage, eraseXPBar}}/>
-            </>)
-            }
-            </div>
-
-            <Menu {...{lang, username, openMenu, setOpenMenu}} 
-            children={<>
-              <NightModeBtn {...{nightMode, setNightMode}}/>
-              {/*Testing the page only*/}
-              <button onClick={()=>localStorage.clear()}>Borrar</button>
-              </>}/>
-
-            <button className="h-10 w-18" onClick={()=>setOpenMenu(true)}>
-              <img src="/svg/hamburger.svg" alt="Hamburger icon" className="h-full w-full"/>
-            </button>
-
-          </section>
+          <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} 
+          levelOptions={{level, percentage, eraseXPBar}} menu={{openMenu, setOpenMenu}} night={{nightMode, setNightMode}} />
       
         {allTaskState.map((object, i)=>{
           return <section key={i + "section"} className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 m-8">

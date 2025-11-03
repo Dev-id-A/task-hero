@@ -2,7 +2,7 @@ import { useState, type Dispatch, type SetStateAction } from "react"
 import type { Lang } from "../Types&Interfaces" 
 import { homeJson, difficults } from "../Json/HomeJson"
 import TaskDiv from "./TaskDiv"
-import type { newTaskInterface } from "../../pages/Home"
+import type { newTaskInterface } from "../Types&Interfaces" 
 import XBtn from "../Options/XBtn"
 
 function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
