@@ -65,3 +65,23 @@ export interface NavbarInterface{
         setNightMode: ReactStateBool | undefined
     }
 }
+
+export interface accordionInterface{
+  user:{
+    lang: Lang,
+    setAlertWindow: ReactStateBool
+  }
+  taskCreate:{
+    addTask: boolean,
+    setAddTask: ReactStateBool,
+    allTaskState: newTaskInterface[],
+    setAllTaskState: Dispatch<SetStateAction<newTaskInterface[]>>
+  }
+  taskErase:{
+    eraseTask:(id:number)=>void,
+    eraseTaskState: boolean,
+    setEraseTaskState: ReactStateBool,
+    taskToErase: React.RefObject<number | null>,
+    reduceTimes:(id:number)=>void,
+  }
+}

@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState} from "react"
 import type { propsType, newTaskInterface } from "../assets/Types&Interfaces"; 
-import AddTaskBtn from "../assets/Task components/AddTaskBtn";
-import TaskInput from "../assets/Task components/TaskInput";
-import TaskToDo from "../assets/Task components/TaskToDo";
 import AlertWindow from "../assets/Windows/AlertWindow";
 import LevelUpWindow from "../assets/Windows/LevelUpWindow";
 import Navbar from "../assets/Home components/Navbar";
@@ -95,27 +92,17 @@ function Home({lang, setLang, nightMode, setNightMode}
   }, [])
 
   return (
-    <main className="min-h-screen w-full bg-blue-100">
+    <main className="min-h-screen w-full bg-blue-100 overflow-x-hidden">
 
       <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
       <AlertWindow {...{lang, alertWindow, setAlertWindow, setEraseTaskState}}/>
 
           <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} 
           levelOptions={{level, percentage, eraseXPBar}} menu={{openMenu, setOpenMenu}} night={{nightMode, setNightMode}} />
-      
-        {allTaskState.map((object, i)=>{
-          return <section key={i + "section"} className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black  m-8">
-                    <TaskToDo key={i} 
-                    {...{lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
-                  </section>
-        })}
-     
-        <NormalTaskAccordion />
-      <section className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8">
-        {addTask ?
-        (<TaskInput {...{lang, allTaskState, setAllTaskState, setAddTask}}/>):
-        (<AddTaskBtn {...{addTask, setAddTask}}/>)}
-      </section>
+
+        <NormalTaskAccordion user={{lang, setAlertWindow}} taskCreate={{addTask, setAddTask, allTaskState, setAllTaskState}} 
+        taskErase={{eraseTask, eraseTaskState, setEraseTaskState, taskToErase, reduceTimes}}/>
+
 
     </main>
           
