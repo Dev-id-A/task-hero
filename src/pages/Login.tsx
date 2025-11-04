@@ -33,8 +33,8 @@ function Login({lang, toggleFade, nightMode, user}: propsType) {
 
 
       <section className="flex flex-col items-center gap-3">
-        <LangIcon src="public/svg/user-solid-full.svg" alt="Profile" btnStyle="bg-gray-300 rounded-full p-1 border-1 rounded-full"/>
-        <input className="border-1 text-center text-xl py-1" type="text" name="username" id="username" placeholder={loginJson.userInput[lang]} 
+        <LangIcon src="public/svg/user-solid-full.svg" alt="Profile" btnStyle="bg-gray-300 rounded-full p-1 border-1 border-black rounded-full"/>
+        <input className="border-1 border-black text-center text-xl py-1" type="text" name="username" id="username" placeholder={loginJson.userInput[lang]} 
         ref={user} onChange={handleChangeBtn}/>
       </section>
 

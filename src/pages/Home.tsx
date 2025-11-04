@@ -6,6 +6,7 @@ import TaskToDo from "../assets/Task components/TaskToDo";
 import AlertWindow from "../assets/Windows/AlertWindow";
 import LevelUpWindow from "../assets/Windows/LevelUpWindow";
 import Navbar from "../assets/Home components/Navbar";
+import NormalTaskAccordion from "../assets/Home components/NormalTaskAccordion";
 
 
 function Home({lang, setLang, nightMode, setNightMode}
@@ -103,14 +104,14 @@ function Home({lang, setLang, nightMode, setNightMode}
           levelOptions={{level, percentage, eraseXPBar}} menu={{openMenu, setOpenMenu}} night={{nightMode, setNightMode}} />
       
         {allTaskState.map((object, i)=>{
-          return <section key={i + "section"} className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 m-8">
+          return <section key={i + "section"} className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black  m-8">
                     <TaskToDo key={i} 
                     {...{lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
                   </section>
         })}
      
-
-      <section className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 m-8">
+        <NormalTaskAccordion />
+      <section className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8">
         {addTask ?
         (<TaskInput {...{lang, allTaskState, setAllTaskState, setAddTask}}/>):
         (<AddTaskBtn {...{addTask, setAddTask}}/>)}

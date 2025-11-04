@@ -60,11 +60,11 @@ function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
       <h2 className="text-3xl">{homeJson.addTask[lang]}</h2>
 
       <TaskDiv title={homeJson.task[lang]} divClass="flex flex-col gap-1" 
-      children={<input className="w-full border-1 rounded-sm px-1" type="text" placeholder={homeJson.taskExample[lang]} 
+      children={<input className="w-full border-1 border-black rounded-sm px-1" type="text" placeholder={homeJson.taskExample[lang]} 
       onChange={(e)=>setCurrentTask({...currentTask, task: e.target.value}) } />} />
       
       <TaskDiv title={homeJson.times[lang]} divClass="flex flex-row self-center gap-2" 
-      children={<input className="w-1/3 h-fit border-1 rounded-sm px-1" type="number" min={1} max={1000} step={1} value={times}
+      children={<input className="w-1/3 h-fit border-1 border-black rounded-sm px-1" type="number" min={1} max={1000} step={1} value={times}
       onChange={(e)=> alertInput(Number(e.target.value))} />} />
 
       <TaskDiv title={homeJson.difficult[lang]} divClass="flex flex-row items-center gap-1" 
@@ -78,7 +78,7 @@ function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
       <TaskDiv title={homeJson.exp[lang]} divClass="flex flex-row items-center gap-1" 
       children={<h3 className="text-blue-500 font-bold">{currentTask.exp} XP</h3>}/>
 
-      <button className="border-1 p-1 bg-green-300 cursor-pointer mx-10" onClick={()=> createTask()}>{homeJson.add[lang]}</button>
+      <button className="border-1 border-black p-1 bg-green-300 cursor-pointer mx-10" onClick={()=> createTask()}>{homeJson.add[lang]}</button>
     </div>
   )
 }

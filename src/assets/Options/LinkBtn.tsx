@@ -17,7 +17,7 @@ function LinkBtn({lang, user}:{
     }
   }
   return (
-        <button onClick={()=>{storeUsername()}} className="border-1 text-2xl w-30 h-15 bg-blue-300">
+        <button onClick={()=>{storeUsername()}} className="border-1 border-black text-2xl w-30 h-15 bg-blue-300">
           {loginJson.enter[lang]}
         </button>
   )
