@@ -9,9 +9,6 @@ import NormalTaskAccordion from "../assets/Home components/NormalTaskAccordion";
 function Home({lang, setLang, nightMode, setNightMode}
   : propsType) {
 
-  //Local storage
-  const username =  localStorage.getItem("username");
-
   //Task states
   const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([]);
   const [addTask, setAddTask] = useState<boolean>(false);
@@ -21,7 +18,11 @@ function Home({lang, setLang, nightMode, setNightMode}
   
   //Leveling states
   const [percentage, setPercentage] = useState<number>(0);
-  const [level, setLevel] = useState<number>(1);
+  const [level, setLevel] = useState<number>(()=>{
+    const actualLevel = localStorage.getItem("level");
+
+    return actualLevel ? Number(actualLevel):1;
+  });
   const [actualXP, setActualXP] = useState<number>(0);
   const [maxXP, setMaxXP] = useState<number>(100);
   const [eraseXPBar, setEraseXPBar] = useState<boolean>(false);
@@ -36,6 +37,11 @@ function Home({lang, setLang, nightMode, setNightMode}
 
   //Title state
   const [showTitle, setShowTitle] = useState<boolean>(false);
+
+  //Local storage
+  const username =  localStorage.getItem("username");
+
+  useEffect(()=>localStorage.setItem("level", String(level)),[level])
 
   useEffect(() => {
     if(actualXP>=maxXP){
@@ -68,6 +74,7 @@ function Home({lang, setLang, nightMode, setNightMode}
 
 
   const eraseTask = (id: number) => setAllTaskState((prev)=> prev.filter((task)=> task.id !== id));
+
   const completeTask = (id: number)=>{
     setAllTaskState((prev)=> prev.filter((task)=> {
       setActualXP((prev)=>prev + task.exp)
