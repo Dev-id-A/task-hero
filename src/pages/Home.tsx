@@ -60,7 +60,7 @@ function Home({lang, setLang, nightMode, setNightMode}
     localStorage.setItem("maxXP", String(maxXP));
   },[level, actualXP, maxXP]);
 
-   useEffect(()=>localStorage.setItem("savedTask", JSON.stringify(allTaskState)),[allTaskState]);
+   useEffect(()=>{localStorage.setItem("savedTask", JSON.stringify(allTaskState));},[allTaskState]);
 
   useEffect(() => {
     if(actualXP>=maxXP){
@@ -94,24 +94,29 @@ function Home({lang, setLang, nightMode, setNightMode}
   //Erase and complete task functions 
   const eraseTask = (id: number) => setAllTaskState((prev)=> prev.filter((task)=> task.id !== id));
 
-  const completeTask = (id: number)=>{
-    setAllTaskState(prev => {
-      const taskToErase = prev.find(task=> task.id === id);
-      if (taskToErase){
-        setActualXP(prevXP=> prevXP += taskToErase.exp)
+  const reduceTimes = (id:number) => {
+    let obtainedExp = 0;
+    setAllTaskState(prev=>{
+      const taskToComplete = prev.map(task=>{
+        if (task.id === id){
+          if(task.times > 1){
+            return{...task, times: task.times-1}
+          }
+          obtainedExp = task.exp;
+          return null;
+        }
+        return task;
+      }).filter(Boolean) as newTaskInterface[];
+
+      if(obtainedExp){
+        console.log(obtainedExp)
+        setActualXP(prevXP=> prevXP + obtainedExp);
+        console.log(actualXP)
       }
-      return prev.filter(task => task.id !== id)
-  })
-}
-  
-  const reduceTimes = (id: number) => {
-    setAllTaskState((prev)=> prev.map((task)=> task.id === id ?
-      {...task, 
-        times: task.times > 1 ? task.times - 1
-        :(completeTask(task.id), task.times)
-      }
-      :task))
-  } 
+
+      return taskToComplete;
+    })
+  }
   //Obtain language
   useEffect(()=>{
       const actualLanguage = localStorage.getItem("lang");
