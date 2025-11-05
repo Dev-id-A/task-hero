@@ -31,6 +31,12 @@ export default function Navbar({user, title, levelOptions, menu, night}:NavbarIn
               <NightModeBtn {...{nightMode, setNightMode}}/>
               {/*Testing the page only*/}
               <button onClick={()=>localStorage.clear()}>Borrar</button>
+              <button onClick={()=>{
+                localStorage.removeItem("level");
+                localStorage.removeItem("actualXP");
+                localStorage.removeItem("maxXP");
+                }}>Borrar nivel</button>
+              
               </>}/>
 
             <button className="h-10 w-18" onClick={()=>setOpenMenu(true)}>

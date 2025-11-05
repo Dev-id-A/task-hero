@@ -23,8 +23,16 @@ function Home({lang, setLang, nightMode, setNightMode}
 
     return actualLevel ? Number(actualLevel):1;
   });
-  const [actualXP, setActualXP] = useState<number>(0);
-  const [maxXP, setMaxXP] = useState<number>(100);
+  const [actualXP, setActualXP] = useState<number>(()=>{
+    const userActualXP = localStorage.getItem("actualXP");
+
+    return userActualXP ? Number(userActualXP):0;
+  });
+  const [maxXP, setMaxXP] = useState<number>(()=>{
+    const userActualXP = localStorage.getItem("maxXP");
+
+    return userActualXP ? Number(userActualXP):100;
+  });
   const [eraseXPBar, setEraseXPBar] = useState<boolean>(false);
 
   //Windows states
@@ -41,7 +49,11 @@ function Home({lang, setLang, nightMode, setNightMode}
   //Local storage
   const username =  localStorage.getItem("username");
 
-  useEffect(()=>localStorage.setItem("level", String(level)),[level])
+  useEffect(()=>{
+    localStorage.setItem("level", String(level));
+    localStorage.setItem("actualXP", String(actualXP));
+    localStorage.setItem("maxXP", String(maxXP));
+  },[level, actualXP, maxXP])
 
   useEffect(() => {
     if(actualXP>=maxXP){
