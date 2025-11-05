@@ -10,7 +10,11 @@ function Home({lang, setLang, nightMode, setNightMode}
   : propsType) {
 
   //Task states
-  const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>([]);
+  const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>(()=>{
+    const savedTask = localStorage.getItem("savedTask");
+
+    return savedTask ? JSON.parse(savedTask):[];
+  });
   const [addTask, setAddTask] = useState<boolean>(false);
 
   //Menu state
@@ -18,22 +22,23 @@ function Home({lang, setLang, nightMode, setNightMode}
   
   //Leveling states
   const [percentage, setPercentage] = useState<number>(0);
-  const [level, setLevel] = useState<number>(()=>{
-    const actualLevel = localStorage.getItem("level");
-
-    return actualLevel ? Number(actualLevel):1;
-  });
-  const [actualXP, setActualXP] = useState<number>(()=>{
-    const userActualXP = localStorage.getItem("actualXP");
-
-    return userActualXP ? Number(userActualXP):0;
-  });
-  const [maxXP, setMaxXP] = useState<number>(()=>{
-    const userActualXP = localStorage.getItem("maxXP");
-
-    return userActualXP ? Number(userActualXP):100;
-  });
   const [eraseXPBar, setEraseXPBar] = useState<boolean>(false);
+    //Saved states
+    const [level, setLevel] = useState<number>(()=>{
+      const actualLevel = localStorage.getItem("level");
+
+      return actualLevel ? Number(actualLevel):1;
+    });
+    const [actualXP, setActualXP] = useState<number>(()=>{
+      const userActualXP = localStorage.getItem("actualXP");
+
+      return userActualXP ? Number(userActualXP):0;
+    });
+    const [maxXP, setMaxXP] = useState<number>(()=>{
+      const userActualXP = localStorage.getItem("maxXP");
+
+      return userActualXP ? Number(userActualXP):100;
+    });
 
   //Windows states
   const [alertWindow, setAlertWindow] = useState<boolean>(false);   
@@ -53,7 +58,9 @@ function Home({lang, setLang, nightMode, setNightMode}
     localStorage.setItem("level", String(level));
     localStorage.setItem("actualXP", String(actualXP));
     localStorage.setItem("maxXP", String(maxXP));
-  },[level, actualXP, maxXP])
+  },[level, actualXP, maxXP]);
+
+   useEffect(()=>localStorage.setItem("savedTask", JSON.stringify(allTaskState)),[allTaskState]);
 
   useEffect(() => {
     if(actualXP>=maxXP){
@@ -84,16 +91,19 @@ function Home({lang, setLang, nightMode, setNightMode}
 
   },[actualXP]);
 
-
+  //Erase and complete task functions 
   const eraseTask = (id: number) => setAllTaskState((prev)=> prev.filter((task)=> task.id !== id));
 
   const completeTask = (id: number)=>{
-    setAllTaskState((prev)=> prev.filter((task)=> {
-      setActualXP((prev)=>prev + task.exp)
-      task.id !== id;
-    }));
-  }
-
+    setAllTaskState(prev => {
+      const taskToErase = prev.find(task=> task.id === id);
+      if (taskToErase){
+        setActualXP(prevXP=> prevXP += taskToErase.exp)
+      }
+      return prev.filter(task => task.id !== id)
+  })
+}
+  
   const reduceTimes = (id: number) => {
     setAllTaskState((prev)=> prev.map((task)=> task.id === id ?
       {...task, 
@@ -102,7 +112,7 @@ function Home({lang, setLang, nightMode, setNightMode}
       }
       :task))
   } 
-
+  //Obtain language
   useEffect(()=>{
       const actualLanguage = localStorage.getItem("lang");
 
