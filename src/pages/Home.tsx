@@ -3,7 +3,7 @@ import type { propsType, newTaskInterface } from "../assets/Types&Interfaces";
 import AlertWindow from "../assets/Windows/AlertWindow";
 import LevelUpWindow from "../assets/Windows/LevelUpWindow";
 import Navbar from "../assets/Home components/Navbar";
-import NormalTaskAccordion from "../assets/Home components/NormalTaskAccordion";
+import TaskAccordion from "../assets/Home components/TaskAccordion";
 import { homeJson } from "../assets/Json/HomeJson";
 
 
@@ -16,6 +16,7 @@ function Home({lang, setLang, nightMode, setNightMode}
 
     return savedTask ? JSON.parse(savedTask):[];
   });
+  const [dailyTaskState, setDailyTaskState] = useState<newTaskInterface[]>([]);
   const [addTask, setAddTask] = useState<boolean>(false);
 
   //Menu state
@@ -110,9 +111,7 @@ function Home({lang, setLang, nightMode, setNightMode}
       }).filter(Boolean) as newTaskInterface[];
 
       if(obtainedExp){
-        console.log(obtainedExp)
         setActualXP(prevXP=> prevXP + obtainedExp);
-        console.log(actualXP)
       }
 
       return taskToComplete;
@@ -135,9 +134,11 @@ function Home({lang, setLang, nightMode, setNightMode}
           <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} 
           levelOptions={{level, percentage, eraseXPBar}} menu={{openMenu, setOpenMenu}} night={{nightMode, setNightMode}} />
 
-        <NormalTaskAccordion title={homeJson.normalTask[lang]} user={{lang, setAlertWindow}} taskState={allTaskState} setTaskState={setAllTaskState}
+        <TaskAccordion title={homeJson.normalTask[lang]} user={{lang, setAlertWindow}} taskState={allTaskState} setTaskState={setAllTaskState}
         taskCreate={{addTask, setAddTask}}  taskErase={{eraseTask, eraseTaskState, setEraseTaskState, taskToErase, reduceTimes}}/>
 
+        <TaskAccordion title={homeJson.dailyTask[lang]} user={{lang, setAlertWindow}} taskState={dailyTaskState} setTaskState={setDailyTaskState}
+        taskCreate={{addTask, setAddTask}}  taskErase={{eraseTask, eraseTaskState, setEraseTaskState, taskToErase, reduceTimes}}/>
 
     </main>
           

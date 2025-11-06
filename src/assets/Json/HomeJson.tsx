@@ -46,6 +46,10 @@ export const homeJson = {
     normalTask:{
         es: "Tareas normales",
         en: "NormalTask"
+    },
+    dailyTask:{
+        es: "Tareas diarias",
+        en: "Daily tasks"
     }
     } as const;
 

@@ -5,7 +5,7 @@ import TaskInput from "../Task components/TaskInput"
 import AddTaskBtn from "../Task components/AddTaskBtn"
 import type { Dispatch, SetStateAction } from "react"
 
-function NormalTaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState}:
+function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState}:
   {title:string, taskState: newTaskInterface[], setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>} & accordionInterface) {
   const {lang, setAlertWindow} = user;
   const {addTask, setAddTask,} = taskCreate;
@@ -37,4 +37,4 @@ function NormalTaskAccordion({title, user, taskCreate, taskErase, taskState, set
   )
 }
 
-export default NormalTaskAccordion
+export default TaskAccordion
