@@ -42,6 +42,10 @@ export const homeJson = {
     taskAlert:{
         es: "Debes crear una tarea.",
         en: "You should create a task."
+    },
+    normalTask:{
+        es: "Tareas normales",
+        en: "NormalTask"
     }
     } as const;
 

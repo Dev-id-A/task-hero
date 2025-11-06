@@ -19,6 +19,7 @@ export const congratulations = {
 }
 
 export const titlesJson = [
+  //First ten levels
   {
     es: "Nadie",
     en: "Nobody"
@@ -59,45 +60,86 @@ export const titlesJson = [
     es: "Relajado visionario",
     en: "Relaxed visionary"
   },
+  //Second ten levels
+  {
+    es: "Tranquilo a secas",
+    en: "Just chill"
+  },
+  {
+    es: "Tranquilo ambicioso",
+    en: "Calm but ambitious"
+  },
+  {
+    es: "Activo",
+    en: "Active"
+  },
+  {
+    es: "Activo y dispuesto",
+    en: "Active and willing"
+  },
+  {
+    es: "Completamente activado",
+    en: "Fully energized"
+  },
+  {
+    es: "Buscador de tareas",
+    en: "Task seeker"
+  },
+  {
+    es: "Amante de las tareas",
+    en: "Task lover"
+  },
+  {
+    es: "Recadero",
+    en: "Gofer"
+  },
+  {
+    es: "Solo un recadero",
+    en: "Just an gofer"
+  },
+  {
+    es: '"El" recadero',
+    en: '"The" gofer'
+  },
+  //Third ten levels
 {
-  es: "Tranquilo a secas",
-  en: "Just Chill"
+  es: "Hacedor de tareas",
+  en: "Task maker"
 },
 {
-  es: "Tranquilo ambicioso",
-  en: "Calm but Ambitious"
+  es: "Completador de tareas",
+  en: "Task finisher"
 },
 {
-  es: "Activo",
-  en: "Active"
+  es: "Jefe de tareas",
+  en: "Task boss"
 },
 {
-  es: "Activo y dispuesto",
-  en: "Active and Willing"
+  es: "Trabajador",
+  en: "Worker"
 },
 {
-  es: "Completamente activado",
-  en: "Fully Energized"
+  es: "Trabajador motivado",
+  en: "Motivated worker"
 },
 {
-  es: "Buscador de tareas",
-  en: "Task Seeker"
+  es: "Amante del trabajo",
+  en: "Work lover"
 },
 {
-  es: "Amante de las tareas",
-  en: "Task Lover"
+  es: "Trabajador definitivo",
+  en: "Ultimate worker"
 },
 {
-  es: "Recadero",
-  en: "Gofer"
+  es: "Trabajador del barrio",
+  en: "Neighborhood worker"
 },
 {
-  es: "Solo un recadero",
-  en: "Just an Gofer"
+  es: "Top 1 del barrio",
+  en: "Top of the block"
 },
 {
-  es: '"El" recadero',
-  en: '"The" Gofer'
+  es: 'El elegido del barrio',
+  en: 'The Chosen of the neigborhood'
 }
-
 ]
