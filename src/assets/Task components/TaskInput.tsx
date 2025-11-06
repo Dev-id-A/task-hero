@@ -5,9 +5,9 @@ import TaskDiv from "./TaskDiv"
 import type { newTaskInterface } from "../Types&Interfaces" 
 import XBtn from "../Options/XBtn"
 
-function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
-  {lang:Lang , allTaskState:newTaskInterface[], 
-    setAllTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, setAddTask: Dispatch<SetStateAction<boolean>>}) {
+function TaskInput({lang, taskState, setTaskState, setAddTask }:
+  {lang:Lang , taskState:newTaskInterface[], 
+    setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, setAddTask: Dispatch<SetStateAction<boolean>>}) {
 
   const [times, setTimes] = useState<number>(1)
   const [currentTask, setCurrentTask] = useState<newTaskInterface>({
@@ -31,7 +31,7 @@ function TaskInput({lang, allTaskState, setAllTaskState, setAddTask }:
       alert(homeJson.taskAlert[lang])
       return;
     }
-    setAllTaskState([...allTaskState, currentTask]);
+    setTaskState([...taskState, currentTask]);
     setCurrentTask({
       task: "",
       times: 1,

@@ -73,9 +73,7 @@ export interface accordionInterface{
   }
   taskCreate:{
     addTask: boolean,
-    setAddTask: ReactStateBool,
-    allTaskState: newTaskInterface[],
-    setAllTaskState: Dispatch<SetStateAction<newTaskInterface[]>>
+    setAddTask: ReactStateBool
   }
   taskErase:{
     eraseTask:(id:number)=>void,

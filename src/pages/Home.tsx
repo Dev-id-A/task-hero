@@ -135,8 +135,8 @@ function Home({lang, setLang, nightMode, setNightMode}
           <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} 
           levelOptions={{level, percentage, eraseXPBar}} menu={{openMenu, setOpenMenu}} night={{nightMode, setNightMode}} />
 
-        <NormalTaskAccordion title={homeJson.normalTask[lang]} user={{lang, setAlertWindow}} taskCreate={{addTask, setAddTask, allTaskState, setAllTaskState}} 
-        taskErase={{eraseTask, eraseTaskState, setEraseTaskState, taskToErase, reduceTimes}}/>
+        <NormalTaskAccordion title={homeJson.normalTask[lang]} user={{lang, setAlertWindow}} taskState={allTaskState} setTaskState={setAllTaskState}
+        taskCreate={{addTask, setAddTask}}  taskErase={{eraseTask, eraseTaskState, setEraseTaskState, taskToErase, reduceTimes}}/>
 
 
     </main>

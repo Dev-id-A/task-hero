@@ -1,12 +1,14 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion"
-import type { accordionInterface } from "../Types&Interfaces"
+import type { accordionInterface, newTaskInterface } from "../Types&Interfaces"
 import TaskToDo from "../Task components/TaskToDo"
 import TaskInput from "../Task components/TaskInput"
 import AddTaskBtn from "../Task components/AddTaskBtn"
+import type { Dispatch, SetStateAction } from "react"
 
-function NormalTaskAccordion({title, user, taskCreate, taskErase}:{title:string} & accordionInterface) {
+function NormalTaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState}:
+  {title:string, taskState: newTaskInterface[], setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>} & accordionInterface) {
   const {lang, setAlertWindow} = user;
-  const {addTask, setAddTask, allTaskState, setAllTaskState} = taskCreate;
+  const {addTask, setAddTask,} = taskCreate;
   const {eraseTask, eraseTaskState, setEraseTaskState, taskToErase, reduceTimes} = taskErase;
 
 
@@ -17,7 +19,7 @@ function NormalTaskAccordion({title, user, taskCreate, taskErase}:{title:string}
             [&>svg]:size-8 [&>svg]:duration-500 [&>svg]:text-black">
               {title}</AccordionTrigger>
             <AccordionContent>
-              {allTaskState.map((object, i)=>{
+              {taskState.map((object, i)=>{
                 return <section key={i + "section"} className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black  m-8">
                     <TaskToDo key={i} 
                     {...{lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
@@ -26,7 +28,7 @@ function NormalTaskAccordion({title, user, taskCreate, taskErase}:{title:string}
      
               <section className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8">
                 {addTask ?
-                (<TaskInput {...{lang, allTaskState, setAllTaskState, setAddTask}}/>):
+                (<TaskInput {...{lang, taskState, setTaskState, setAddTask}}/>):
                 (<AddTaskBtn {...{addTask, setAddTask}}/>)}
               </section>
             </AccordionContent>
