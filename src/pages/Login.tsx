@@ -3,7 +3,7 @@ import { loginJson } from "../assets/Json/LoginJson"
 import LinkBtn from "../assets/Options/LinkBtn"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
-import type { propsType } from "../assets/Types&Interfaces" 
+import type { propsType } from "../assets/Functions, states & interfaces/Types&Interfaces" 
 
 
 function Login({lang, toggleFade, nightMode, user}: propsType) {

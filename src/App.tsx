@@ -3,7 +3,7 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import {  useRef, useState } from 'react'
 import Layout from './pages/Layout'
-import type { Lang } from './assets/Types&Interfaces'
+import type { Lang } from './assets/Functions, states & interfaces/Types&Interfaces'
 
 
 function App() {

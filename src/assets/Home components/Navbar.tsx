@@ -2,7 +2,7 @@ import { titlesJson } from "../Json/AlertsJson";
 import XPBar from "../XPBar/XPBar";
 import NightModeBtn from "../Options/NightModeBtn";
 import Menu from "../Options/Menu";
-import type { NavbarInterface } from "../Types&Interfaces";
+import type { NavbarInterface } from "../Functions, states & interfaces/Types&Interfaces";
 
 
 

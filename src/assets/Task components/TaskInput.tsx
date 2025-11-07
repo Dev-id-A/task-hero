@@ -1,8 +1,8 @@
 import { useState, type Dispatch, type SetStateAction } from "react"
-import type { Lang } from "../Types&Interfaces" 
+import type { Lang } from "../Functions, states & interfaces/Types&Interfaces" 
 import { homeJson, difficults } from "../Json/HomeJson"
 import TaskDiv from "./TaskDiv"
-import type { newTaskInterface } from "../Types&Interfaces" 
+import type { newTaskInterface } from "../Functions, states & interfaces/Types&Interfaces" 
 import XBtn from "../Options/XBtn"
 
 function TaskInput({lang, taskState, setTaskState, setAddTask }:

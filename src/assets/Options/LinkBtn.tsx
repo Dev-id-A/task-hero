@@ -1,4 +1,4 @@
-import type { Lang } from "../Types&Interfaces"; 
+import type { Lang } from "../Functions, states & interfaces/Types&Interfaces"; 
 import { loginJson } from "../Json/LoginJson"
 import { useNavigate } from "react-router"
 

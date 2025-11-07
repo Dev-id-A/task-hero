@@ -1,6 +1,6 @@
-import type { Lang } from "../Types&Interfaces"
+import type { Lang } from "../Functions, states & interfaces/Types&Interfaces"
 import { alertJson } from "../Json/AlertsJson"
-import type { alertWindowInterface } from "../Types&Interfaces"
+import type { alertWindowInterface } from "../Functions, states & interfaces/Types&Interfaces"
 import { useEffect } from "react"
 
 function AlertWindow({lang, alertWindow, setAlertWindow, setEraseTaskState}: {lang:Lang} & alertWindowInterface) {

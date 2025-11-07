@@ -1,8 +1,8 @@
 import TaskDiv from "./TaskDiv"
 import XBtn from "../Options/XBtn"
 import { homeJson } from "../Json/HomeJson"
-import type { newTaskInterface } from "../Types&Interfaces" 
-import type { alertWindowInterface, Lang } from "../Types&Interfaces" 
+import type { newTaskInterface } from "../Functions, states & interfaces/Types&Interfaces" 
+import type { alertWindowInterface, Lang } from "../Functions, states & interfaces/Types&Interfaces" 
 import { useEffect } from "react"
 
 function TaskToDo({lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}:

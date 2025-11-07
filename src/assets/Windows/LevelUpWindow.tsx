@@ -1,4 +1,4 @@
-import type { Lang, levelUpWindowInterface } from "../Types&Interfaces";
+import type { Lang, levelUpWindowInterface } from "../Functions, states & interfaces/Types&Interfaces";
 import { congratulations, titlesJson } from "../Json/AlertsJson";
 
 function LevelUpWindow({lang, level, levelUpWindow, setLevelUpWindow}: {lang:Lang, level:number} & levelUpWindowInterface) {

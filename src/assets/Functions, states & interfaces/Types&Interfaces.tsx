@@ -3,6 +3,7 @@ import { type Dispatch, type SetStateAction, type RefObject } from 'react'
 export type Lang = "es" | "en";
 
 export type ReactStateBool = React.Dispatch<React.SetStateAction<boolean>>
+export type ReactStateNumber = React.Dispatch<React.SetStateAction<number>>
 
 export interface menuInterface{
   openMenu: boolean,

@@ -1,4 +1,4 @@
-import type { nightModeInterface } from "../Types&Interfaces" 
+import type { nightModeInterface } from "../Functions, states & interfaces/Types&Interfaces" 
 
 function NightModeBtn({nightMode, setNightMode}: nightModeInterface) {
   return (

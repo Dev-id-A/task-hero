@@ -1,5 +1,5 @@
 import { homeJson } from "../Json/HomeJson"
-import type { Lang, menuInterface } from "../Types&Interfaces"
+import type { Lang, menuInterface } from "../Functions, states & interfaces/Types&Interfaces"
 import type { ReactNode } from "react"
 
 function Menu({children, lang, username, openMenu, setOpenMenu}: {children: ReactNode, lang:Lang, username: string | null} & menuInterface) {

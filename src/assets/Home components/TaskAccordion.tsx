@@ -1,5 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion"
-import type { accordionInterface, newTaskInterface } from "../Types&Interfaces"
+import type { accordionInterface, newTaskInterface } from "../Functions, states & interfaces/Types&Interfaces"
 import TaskToDo from "../Task components/TaskToDo"
 import TaskInput from "../Task components/TaskInput"
 import AddTaskBtn from "../Task components/AddTaskBtn"
@@ -14,8 +14,8 @@ function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskSt
 
   return (
     <Accordion type="single" collapsible>
-        <AccordionItem value="normal-tasks" >
-            <AccordionTrigger className="w-full justify-center text-2xl font-bold border-b-1 border-black rounded-none
+        <AccordionItem value="tasks" >
+            <AccordionTrigger className="w-full justify-center text-2xl font-bold border-y-1 border-black rounded-none
             [&>svg]:size-8 [&>svg]:duration-500 [&>svg]:text-black">
               {title}</AccordionTrigger>
             <AccordionContent>
