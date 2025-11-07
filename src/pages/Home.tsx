@@ -36,7 +36,9 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
 
   useEffect(()=> saveLevelAndXP(level, actualXP, maxXP),[level, actualXP, maxXP]);
 
-  useEffect(()=>localStorage.setItem("savedTask", JSON.stringify(allTaskState)),[allTaskState]);
+  useEffect(()=> localStorage.setItem("savedTask", JSON.stringify(allTaskState)),[allTaskState]);
+
+  useEffect(()=> localStorage.setItem("savedDailyTask", JSON.stringify(dailyTaskState)),[dailyTaskState]);
 
   useEffect(()=> animationXPBar(actualXP, maxXP, setEraseXPBar, setLevelUpWindow, setPercentage, setLevel, setActualXP, setMaxXP),[actualXP]);
 
@@ -66,7 +68,7 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
 
         <TaskAccordion title={homeJson.dailyTask[lang]} user={{lang, setAlertWindow}} taskState={dailyTaskState} setTaskState={setDailyTaskState}
           taskCreate={{addTask, setAddTask}}  taskErase={{eraseTask, eraseTaskState, setEraseTaskState, taskToErase, 
-          reduceTimes:(id)=>reduceTimes(id, setAllTaskState, setActualXP)}}/>
+          reduceTimes:(id)=>reduceTimes(id, setDailyTaskState, setActualXP)}}/>
 
     </main>
           

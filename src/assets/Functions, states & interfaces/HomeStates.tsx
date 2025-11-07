@@ -2,19 +2,34 @@ import { useState, useRef } from "react";
 import type { newTaskInterface } from "./Types&Interfaces";
 
     export function taskState(){
-    const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>(()=>{
-    const savedTask = localStorage.getItem("savedTask");
+        const [allTaskState, setAllTaskState] = useState<newTaskInterface[]>(()=>{
+        const savedTask = localStorage.getItem("savedTask");
 
-    return savedTask ? JSON.parse(savedTask):[];
-    });
-    const [dailyTaskState, setDailyTaskState] = useState<newTaskInterface[]>([]);
-    const [addTask, setAddTask] = useState<boolean>(false);
-    return{
-        allTaskState, setAllTaskState,
-        dailyTaskState, setDailyTaskState,
-        addTask, setAddTask
+        return savedTask ? JSON.parse(savedTask):[];
+        });
+        
+        const [dailyTaskState, setDailyTaskState] = useState<newTaskInterface[]>(()=>{
+        const savedDailyTask = localStorage.getItem("savedDailyTask");
+
+        return savedDailyTask ? JSON.parse(savedDailyTask):[];
+        });
+
+        const [addTask, setAddTask] = useState<boolean>(false);
+        return{
+            allTaskState, setAllTaskState,
+            dailyTaskState, setDailyTaskState,
+            addTask, setAddTask
+        }
     }
-}
+
+        export function taskEraseState(){
+        const [eraseTaskState, setEraseTaskState] = useState<boolean>(false);
+        const taskToErase = useRef<number | null>(null);
+
+        return{
+            eraseTaskState, setEraseTaskState, taskToErase
+        }
+    }
 
     export function levelStates(){
         //Leveling states
@@ -53,14 +68,5 @@ import type { newTaskInterface } from "./Types&Interfaces";
         return {
             alertWindow, setAlertWindow,
             levelUpWindow, setLevelUpWindow
-        }
-    }
-
-    export function taskEraseState(){
-        const [eraseTaskState, setEraseTaskState] = useState<boolean>(false);
-        const taskToErase = useRef<number | null>(null);
-
-        return{
-            eraseTaskState, setEraseTaskState, taskToErase
         }
     }

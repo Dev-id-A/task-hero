@@ -1,9 +1,9 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { newTaskInterface, ReactStateBool, ReactStateNumber } from "./Types&Interfaces";
   
-  export const reduceTimes = (id:number, setAllTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, setActualXP: Dispatch<SetStateAction<number>>) => {
+  export const reduceTimes = (id:number, taskState: Dispatch<SetStateAction<newTaskInterface[]>>, setActualXP: Dispatch<SetStateAction<number>>) => {
     let obtainedExp = 0;
-    setAllTaskState(prev=>{
+    taskState(prev=>{
       const taskToComplete = prev.map(task=>{
         if (task.id === id){
           if(task.times > 1){
