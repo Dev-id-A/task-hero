@@ -3,14 +3,14 @@ import type { accordionInterface, newTaskInterface } from "../Functions, states 
 import TaskToDo from "../Task components/TaskToDo"
 import TaskInput from "../Task components/TaskInput"
 import AddTaskBtn from "../Task components/AddTaskBtn"
-import type { Dispatch, SetStateAction } from "react"
+import type { Dispatch, RefObject, SetStateAction } from "react"
 
-function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState}:
-  {title:string, taskState: newTaskInterface[], setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>} & accordionInterface) {
+function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState, daily}:
+  {title:string, taskState: newTaskInterface[], setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, daily?: RefObject<boolean>} 
+  & accordionInterface) {
   const {lang, setAlertWindow} = user;
   const {addTask, setAddTask,} = taskCreate;
   const {eraseTask, eraseTaskState, setEraseTaskState, taskToErase, reduceTimes} = taskErase;
-
 
   return (
     <Accordion type="single" collapsible>
@@ -20,7 +20,8 @@ function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskSt
               {title}</AccordionTrigger>
             <AccordionContent>
               {taskState.map((object, i)=>{
-                return <section key={i + "section"} className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black  m-8">
+                return <section key={i + "section"} className={`bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8
+                ${object.completed && "hidden"}`}>
                     <TaskToDo key={i} 
                     {...{lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
                   </section>
@@ -28,7 +29,7 @@ function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskSt
      
               <section className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8">
                 {addTask ?
-                (<TaskInput {...{lang, taskState, setTaskState, setAddTask}}/>):
+                (<TaskInput {...{lang, taskState, setTaskState, setAddTask, daily}}/>):
                 (<AddTaskBtn {...{addTask, setAddTask}}/>)}
               </section>
             </AccordionContent>

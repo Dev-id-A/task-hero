@@ -16,6 +16,7 @@ export interface newTaskInterface{
   difficult: string; 
   id: number
   exp: number
+  completed?: boolean //For recurrent task only
 }
 
 export interface propsType extends nightModeInterface{

@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react"
+import { useEffect, useRef, useState} from "react"
 import type { propsType } from "../assets/Functions, states & interfaces/Types&Interfaces"; 
 import AlertWindow from "../assets/Windows/AlertWindow";
 import LevelUpWindow from "../assets/Windows/LevelUpWindow";
@@ -50,8 +50,16 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
       const actualLanguage = localStorage.getItem("lang");
 
         (actualLanguage == "es" || actualLanguage == "en" && setLang?.(actualLanguage))
-
   }, [])
+
+  const daily = useRef<boolean>(true);
+
+  //Reset everyday
+  useEffect(()=>{
+    setDailyTaskState(prev=> prev.map(task=> ({...task, completed: false})))
+  }
+    ,[])
+
 
   return (
     <main className="min-h-screen w-full bg-blue-100 overflow-x-hidden">
@@ -68,7 +76,7 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
 
         <TaskAccordion title={homeJson.dailyTask[lang]} user={{lang, setAlertWindow}} taskState={dailyTaskState} setTaskState={setDailyTaskState}
           taskCreate={{addTask, setAddTask}}  taskErase={{eraseTask, eraseTaskState, setEraseTaskState, taskToErase, 
-          reduceTimes:(id)=>reduceTimes(id, setDailyTaskState, setActualXP)}}/>
+          reduceTimes:(id)=>reduceTimes(id, setDailyTaskState, setActualXP)}} daily={daily}/>
 
     </main>
           

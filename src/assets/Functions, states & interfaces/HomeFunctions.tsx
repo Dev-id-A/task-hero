@@ -5,14 +5,22 @@ import type { newTaskInterface, ReactStateBool, ReactStateNumber } from "./Types
     let obtainedExp = 0;
     taskState(prev=>{
       const taskToComplete = prev.map(task=>{
+
         if (task.id === id){
+
           if(task.times > 1){
             return{...task, times: task.times-1}
           }
+          if("completed" in task){
+            obtainedExp = task.exp;
+            return {...task, completed: true}
+          }
           obtainedExp = task.exp;
           return null;
+
         }
         return task;
+        
       }).filter(Boolean) as newTaskInterface[];
 
       if(obtainedExp){

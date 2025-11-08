@@ -1,12 +1,12 @@
-import { useState, type Dispatch, type SetStateAction } from "react"
+import { useState, type Dispatch, type RefObject, type SetStateAction } from "react"
 import type { Lang } from "../Functions, states & interfaces/Types&Interfaces" 
 import { homeJson, difficults } from "../Json/HomeJson"
 import TaskDiv from "./TaskDiv"
 import type { newTaskInterface } from "../Functions, states & interfaces/Types&Interfaces" 
 import XBtn from "../Options/XBtn"
 
-function TaskInput({lang, taskState, setTaskState, setAddTask }:
-  {lang:Lang , taskState:newTaskInterface[], 
+function TaskInput({lang, taskState, setTaskState, setAddTask, daily}:
+  {lang:Lang , taskState:newTaskInterface[], daily?: RefObject<boolean> ,
     setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, setAddTask: Dispatch<SetStateAction<boolean>>}) {
 
   const [times, setTimes] = useState<number>(1)
@@ -15,7 +15,8 @@ function TaskInput({lang, taskState, setTaskState, setAddTask }:
     times: 1,
     difficult: difficults[0][lang],
     id: Date.now(),
-    exp: 10
+    exp: 10,
+    ...(daily ? {completed: false}:{})
   });
 
   const experience = {
@@ -37,7 +38,8 @@ function TaskInput({lang, taskState, setTaskState, setAddTask }:
       times: 1,
       difficult: difficults[0][lang],
       id: Date.now(),
-      exp: 10
+      exp: 10,
+      ...(daily ? {completed: false}:{})
     })
     setAddTask(false);
   }
