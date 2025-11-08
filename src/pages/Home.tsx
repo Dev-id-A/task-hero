@@ -56,7 +56,13 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
 
   //Reset everyday
   useEffect(()=>{
-    setDailyTaskState(prev=> prev.map(task=> ({...task, completed: false})))
+    const lastDay = localStorage.getItem("lastDay");
+    const today = new Date().toDateString()
+
+    if(lastDay !== today){
+      setDailyTaskState(prev=> prev.map(task=> ({...task, completed: false})))
+      localStorage.setItem("lastDay", today);
+    }
   }
     ,[])
 
