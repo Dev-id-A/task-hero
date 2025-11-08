@@ -14,11 +14,15 @@ import type { newTaskInterface } from "./Types&Interfaces";
         return savedDailyTask ? JSON.parse(savedDailyTask):[];
         });
 
+        const daily = useRef<boolean>(true);
+        
+
         const [addTask, setAddTask] = useState<boolean>(false);
         return{
             allTaskState, setAllTaskState,
             dailyTaskState, setDailyTaskState,
-            addTask, setAddTask
+            addTask, setAddTask,
+            daily
         }
     }
 

@@ -1,6 +1,15 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { newTaskInterface, ReactStateBool, ReactStateNumber } from "./Types&Interfaces";
-  
+import type { Lang, newTaskInterface, ReactStateBool, ReactStateNumber } from "./Types&Interfaces";
+
+  export const getLang = (setLang?: Dispatch<SetStateAction<Lang>>) =>{
+          const actualLanguage = localStorage.getItem("lang");
+    
+            (actualLanguage == "es" || actualLanguage == "en" && setLang?.(actualLanguage))
+      }
+   
+
+  export const eraseTask = (id: number, taskState: Dispatch<SetStateAction<newTaskInterface[]>>) => taskState((prev)=> prev.filter((task)=> task.id !== id));
+
   export const reduceTimes = (id:number, taskState: Dispatch<SetStateAction<newTaskInterface[]>>, setActualXP: Dispatch<SetStateAction<number>>) => {
     let obtainedExp = 0;
     taskState(prev=>{
@@ -64,5 +73,16 @@ import type { newTaskInterface, ReactStateBool, ReactStateNumber } from "./Types
     }
     setPercentage(actualXP / maxXP * 100);
 
+  }
 
+  export const resetDaily =(taskState: Dispatch<SetStateAction<newTaskInterface[]>>) =>{
+    {
+    const lastDay = localStorage.getItem("lastDay");
+    const today = new Date().toDateString()
+
+    if(lastDay !== today){
+      taskState(prev=> prev.map(task=> ({...task, completed: false})))
+      localStorage.setItem("lastDay", today);
+    }
+  }
   }
