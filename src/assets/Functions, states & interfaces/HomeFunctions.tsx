@@ -75,14 +75,28 @@ import type { Lang, newTaskInterface, ReactStateBool, ReactStateNumber } from ".
 
   }
 
-  export const resetDaily =(taskState: Dispatch<SetStateAction<newTaskInterface[]>>) =>{
+  export const resetRecurrentTask =(taskState: Dispatch<SetStateAction<newTaskInterface[]>>, weekly: boolean ) =>{
     {
     const lastDay = localStorage.getItem("lastDay");
-    const today = new Date().toDateString()
+    const today = new Date();
+    const todayString = today.toDateString();
+    const monday = today.getDay() === 1; 
 
-    if(lastDay !== today){
-      taskState(prev=> prev.map(task=> ({...task, completed: false})))
-      localStorage.setItem("lastDay", today);
+    if(lastDay !== todayString){
+
+      if(!weekly){
+        taskState(prev=> prev.map(task=> ({...task, completed: false})))
+        localStorage.setItem("lastDay", todayString);
+        return;
+      }
+      
+      if(weekly && monday){
+        const a=localStorage.getItem("lastDay");
+
+        console.log(a)
+        taskState(prev=> prev.map(task=> ({...task, completed: false})))
+        localStorage.setItem("lastDay", todayString);
+        return;}
     }
   }
   }

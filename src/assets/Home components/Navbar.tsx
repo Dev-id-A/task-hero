@@ -36,7 +36,6 @@ export default function Navbar({user, title, levelOptions, menu, night}:NavbarIn
                 localStorage.removeItem("actualXP");
                 localStorage.removeItem("maxXP");
                 }}>Borrar nivel</button>
-              
               </>}/>
 
             <button className="h-10 w-18" onClick={()=>setOpenMenu(true)}>

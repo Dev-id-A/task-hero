@@ -16,7 +16,7 @@ function TaskInput({lang, taskState, setTaskState, setAddTask, recurrent}:
     difficult: difficults[0][lang],
     id: Date.now(),
     exp: 10,
-    ...(recurrent ? {completed: false}:{})
+    ...(recurrent?.current ? {completed: false}:{})
   });
 
   const experience = {

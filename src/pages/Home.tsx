@@ -5,7 +5,7 @@ import LevelUpWindow from "../assets/Windows/LevelUpWindow";
 import Navbar from "../assets/Home components/Navbar";
 import TaskAccordion from "../assets/Home components/TaskAccordion";
 import { homeJson } from "../assets/Json/HomeJson";
-import { animationXPBar, reduceTimes, saveLevelAndXP, eraseTask, resetDaily, getLang } from "../assets/Functions, states & interfaces/HomeFunctions";
+import { animationXPBar, reduceTimes, saveLevelAndXP, eraseTask, resetRecurrentTask, getLang } from "../assets/Functions, states & interfaces/HomeFunctions";
 import { taskState, levelStates, windowsState, taskEraseState,} from "../assets/Functions, states & interfaces/HomeStates";
 
 
@@ -41,11 +41,14 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
 
   useEffect(()=> localStorage.setItem("savedDailyTask", JSON.stringify(dailyTaskState)),[dailyTaskState]);
 
+  useEffect(()=> localStorage.setItem("savedWeeklyTask", JSON.stringify(weeklyTaskState)),[weeklyTaskState]);
+
   useEffect(()=> animationXPBar(actualXP, maxXP, setEraseXPBar, setLevelUpWindow, setPercentage, setLevel, setActualXP, setMaxXP),[actualXP]);
 
   useEffect(()=>{
     getLang(setLang); //Obtain language
-    resetDaily(setDailyTaskState); //Reset everyday
+    resetRecurrentTask(setDailyTaskState, false); //Reset everyday
+    resetRecurrentTask(setWeeklyTaskState, true); //Reset weekly
   } ,[])
 
   return (
