@@ -12,7 +12,8 @@ import { taskState, levelStates, windowsState, taskEraseState,} from "../assets/
 function Home({lang, setLang, nightMode, setNightMode}:propsType) {
 
   //Task states
-  const {allTaskState, setAllTaskState, dailyTaskState, setDailyTaskState, addTask, setAddTask, daily} = taskState();
+  const {allTaskState, setAllTaskState, dailyTaskState, setDailyTaskState, weeklyTaskState, setWeeklyTaskState,
+     addTask, setAddTask, recurrent} = taskState();
 
   //Erasing task
   const {eraseTaskState, setEraseTaskState, taskToErase} = taskEraseState();
@@ -42,11 +43,10 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
 
   useEffect(()=> animationXPBar(actualXP, maxXP, setEraseXPBar, setLevelUpWindow, setPercentage, setLevel, setActualXP, setMaxXP),[actualXP]);
 
-  //Obtain language
-  useEffect(()=>getLang(setLang), [])
-
-  //Reset everyday
-  useEffect(()=>resetDaily(setDailyTaskState),[])
+  useEffect(()=>{
+    getLang(setLang); //Obtain language
+    resetDaily(setDailyTaskState); //Reset everyday
+  } ,[])
 
   return (
     <main className="min-h-screen w-full bg-blue-100 overflow-x-hidden">
@@ -65,7 +65,12 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
         <TaskAccordion title={homeJson.dailyTask[lang]} user={{lang, setAlertWindow}} taskState={dailyTaskState} setTaskState={setDailyTaskState}
           taskCreate={{addTask, setAddTask}}  taskErase={{eraseTaskState, setEraseTaskState, taskToErase, 
           eraseTask:(id)=> eraseTask(id, setDailyTaskState),
-          reduceTimes:(id)=>reduceTimes(id, setDailyTaskState, setActualXP)}} daily={daily}/>
+          reduceTimes:(id)=>reduceTimes(id, setDailyTaskState, setActualXP)}} recurrent={recurrent}/>
+
+        <TaskAccordion title={homeJson.weeklyTask[lang]} user={{lang, setAlertWindow}} taskState={weeklyTaskState} setTaskState={setWeeklyTaskState}
+          taskCreate={{addTask, setAddTask}}  taskErase={{eraseTaskState, setEraseTaskState, taskToErase, 
+          eraseTask:(id)=> eraseTask(id, setWeeklyTaskState),
+          reduceTimes:(id)=>reduceTimes(id, setWeeklyTaskState, setActualXP)}} recurrent={recurrent}/>
 
     </main>
           

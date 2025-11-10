@@ -5,8 +5,8 @@ import TaskInput from "../Task components/TaskInput"
 import AddTaskBtn from "../Task components/AddTaskBtn"
 import type { Dispatch, RefObject, SetStateAction } from "react"
 
-function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState, daily}:
-  {title:string, taskState: newTaskInterface[], setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, daily?: RefObject<boolean>} 
+function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState, recurrent}:
+  {title:string, taskState: newTaskInterface[], setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, recurrent?: RefObject<boolean>} 
   & accordionInterface) {
   const {lang, setAlertWindow} = user;
   const {addTask, setAddTask,} = taskCreate;
@@ -29,7 +29,7 @@ function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskSt
      
               <section className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8">
                 {addTask ?
-                (<TaskInput {...{lang, taskState, setTaskState, setAddTask, daily}}/>):
+                (<TaskInput {...{lang, taskState, setTaskState, setAddTask, recurrent}}/>):
                 (<AddTaskBtn {...{addTask, setAddTask}}/>)}
               </section>
             </AccordionContent>

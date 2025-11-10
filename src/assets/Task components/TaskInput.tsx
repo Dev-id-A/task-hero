@@ -5,8 +5,8 @@ import TaskDiv from "./TaskDiv"
 import type { newTaskInterface } from "../Functions, states & interfaces/Types&Interfaces" 
 import XBtn from "../Options/XBtn"
 
-function TaskInput({lang, taskState, setTaskState, setAddTask, daily}:
-  {lang:Lang , taskState:newTaskInterface[], daily?: RefObject<boolean> ,
+function TaskInput({lang, taskState, setTaskState, setAddTask, recurrent}:
+  {lang:Lang , taskState:newTaskInterface[], recurrent?: RefObject<boolean> ,
     setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, setAddTask: Dispatch<SetStateAction<boolean>>}) {
 
   const [times, setTimes] = useState<number>(1)
@@ -16,7 +16,7 @@ function TaskInput({lang, taskState, setTaskState, setAddTask, daily}:
     difficult: difficults[0][lang],
     id: Date.now(),
     exp: 10,
-    ...(daily ? {completed: false}:{})
+    ...(recurrent ? {completed: false}:{})
   });
 
   const experience = {
@@ -39,7 +39,7 @@ function TaskInput({lang, taskState, setTaskState, setAddTask, daily}:
       difficult: difficults[0][lang],
       id: Date.now(),
       exp: 10,
-      ...(daily ? {completed: false}:{})
+      ...(recurrent ? {completed: false}:{})
     })
     setAddTask(false);
   }

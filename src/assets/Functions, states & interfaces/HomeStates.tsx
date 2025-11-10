@@ -14,7 +14,13 @@ import type { newTaskInterface } from "./Types&Interfaces";
         return savedDailyTask ? JSON.parse(savedDailyTask):[];
         });
 
-        const daily = useRef<boolean>(true);
+        const [weeklyTaskState, setWeeklyTaskState] = useState<newTaskInterface[]>(()=>{
+        const savedWeeklyTask = localStorage.getItem("savedWeeklyTask");
+
+        return savedWeeklyTask ? JSON.parse(savedWeeklyTask):[];
+        });
+
+        const recurrent = useRef<boolean>(true);
         
 
         const [addTask, setAddTask] = useState<boolean>(false);
@@ -22,7 +28,8 @@ import type { newTaskInterface } from "./Types&Interfaces";
             allTaskState, setAllTaskState,
             dailyTaskState, setDailyTaskState,
             addTask, setAddTask,
-            daily
+            weeklyTaskState, setWeeklyTaskState,
+            recurrent
         }
     }
 
