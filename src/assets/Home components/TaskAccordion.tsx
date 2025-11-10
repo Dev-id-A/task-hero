@@ -19,18 +19,20 @@ function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskSt
             [&>svg]:size-8 [&>svg]:duration-500 [&>svg]:text-black">
               {title}</AccordionTrigger>
             <AccordionContent>
-              {taskState.map((object, i)=>{
-                return <section key={i + "section"} className={`bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8
-                ${object.completed && "hidden"}`}>
-                    <TaskToDo key={i} 
-                    {...{lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
-                  </section>
-              })}
-     
-              <section className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8">
-                {addTask ?
-                (<TaskInput {...{lang, taskState, setTaskState, setAddTask, recurrent}}/>):
-                (<AddTaskBtn {...{addTask, setAddTask}}/>)}
+              <section className="md:grid md:grid-cols-2 lg:grid-cols-3">
+                {taskState.map((object, i)=>{
+                  return <div key={i + "div"} className={`bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8
+                  ${object.completed && "hidden"}`}>
+                      <TaskToDo key={i} 
+                      {...{lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
+                    </div>
+                })}
+      
+                <div className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8">
+                  {addTask ?
+                  (<TaskInput {...{lang, taskState, setTaskState, setAddTask, recurrent}}/>):
+                  (<AddTaskBtn {...{addTask, setAddTask}}/>)}
+                </div>
               </section>
             </AccordionContent>
         </AccordionItem>

@@ -60,7 +60,7 @@ import type { Lang, newTaskInterface, ReactStateBool, ReactStateNumber } from ".
         const continueBar = setTimeout(()=>{
           setEraseXPBar(false);
           setActualXP(prev => prev = prev - maxXP);
-          setMaxXP(prev => Math.ceil(prev + 1.2));
+          setMaxXP(prev => Math.ceil(prev + 50));
           setPercentage(actualXP / maxXP * 100);
             setTimeout(()=>setLevelUpWindow(true),500)
       },1600)

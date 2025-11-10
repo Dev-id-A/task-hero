@@ -16,11 +16,11 @@ export default function Navbar({user, title, levelOptions, menu, night}:NavbarIn
   return (
               <section className="min-h-10 text-center bg-blue-500 text-3xl w-full flex flex-row border-t-1 border-blue-600">
 
-            <div className="w-full flex flex-row items-center" onClick={()=> setShowTitle(prev=> !prev)}>
+            <div className="w-full flex flex-row items-center px-2" onClick={()=> setShowTitle(prev=> !prev)}>
             {showTitle ? 
             (<h1 className="text-center w-full text-2xl font-bold">{titlesJson[level- 1][lang]}</h1>):
             (<>
-              <h1 className="min-w-20">LVL {level}</h1>
+              <h1 className="min-w-25">LVL {level}</h1>
               <XPBar {...{percentage, eraseXPBar}}/>
             </>)
             }
