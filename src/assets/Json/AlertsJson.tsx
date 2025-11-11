@@ -140,6 +140,48 @@ export const titlesJson = [
 },
 {
   es: 'El elegido del barrio',
-  en: 'The Chosen of the neigborhood'
+  en: 'The Chosen of the neighborhood'
+},
+  //Fourth ten levels
+{
+  es: "Recadero de la ciudad",
+  en: "City tasker"
+},
+{
+  es: "Recadero reconocido",
+  en: "Recognized tasker"
+},
+{
+  es: "Recadero famoso",
+  en: "Famous tasker"
+},
+{
+  es: "Recadero pop-star",
+  en: "Pop-star tasker"
+},
+{
+  es: "Recadero estatal",
+  en: "State tasker"
+},
+{
+  es: "Birrecadero estatal",
+  en: "State double-tasker"
+},
+{
+  es: "Trirrecadero estatal",
+  en: "State triple-tasker"
+},
+{
+  es: "Recadero del pais",
+  en: "Country tasker"
+},
+{
+  es: "Recadero de gira",
+  en: "Traveling tasker"
+},
+{
+  es: "Recadero aclamado",
+  en: "Acclaimed tasker"
 }
+
 ]
