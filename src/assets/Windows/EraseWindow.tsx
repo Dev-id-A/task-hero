@@ -18,7 +18,7 @@ function EraseWindow({lang, eraseWindow, setEraseWindow, setEraseTaskState}: {la
   return (
     <section className={`fixed inset-0 z-50 flex items-center justify-center px-5 bg-black/50 backdrop-blur
     ${!eraseWindow && "hidden"}`}>
-      <div className="h-50 bg-blue-200 border-1 border-black flex flex-col items-center justify-center gap-5 font-bold">
+      <div className="h-50 p-10 bg-blue-200 border-1 border-black flex flex-col items-center justify-center gap-5 font-bold">
         <h2 className="text-xl text-center">{alertJson.eraseTask[lang]}</h2>
 
         <div className="flex flex-col w-1/2 gap-1">

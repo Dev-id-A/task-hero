@@ -2,11 +2,13 @@ import { useEffect, useState} from "react"
 import type { propsType } from "../assets/Functions, states & interfaces/Types&Interfaces"; 
 import EraseWindow from "../assets/Windows/EraseWindow";
 import LevelUpWindow from "../assets/Windows/LevelUpWindow";
+import AlertWindow from "../assets/Windows/AlertWindow";
 import Navbar from "../assets/Home components/Navbar";
 import TaskAccordion from "../assets/Home components/TaskAccordion";
 import { homeJson } from "../assets/Json/HomeJson";
 import { animationXPBar, reduceTimes, saveLevelAndXP, eraseTask, resetRecurrentTask, getLang } from "../assets/Functions, states & interfaces/HomeFunctions";
 import { taskState, levelStates, windowsState, taskEraseState,} from "../assets/Functions, states & interfaces/HomeStates";
+import { alertJson } from "../assets/Json/AlertsJson";
 
 
 function Home({lang, setLang, nightMode, setNightMode}:propsType) {
@@ -27,7 +29,7 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
     level, setLevel, actualXP, setActualXP, maxXP, setMaxXP} = levelStates();
 
   //Windows states
-  const {eraseWindow, setEraseWindow, levelUpWindow, setLevelUpWindow} = windowsState();
+  const {eraseWindow, setEraseWindow, levelUpWindow, setLevelUpWindow, alertWindow, setAlertWindow} = windowsState();
 
   //Title state
   const [showTitle, setShowTitle] = useState<boolean>(false);
@@ -53,9 +55,10 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
 
   return (
     <main className="min-h-screen w-full bg-blue-100 overflow-x-hidden">
-
+      
       <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
       <EraseWindow {...{lang, eraseWindow, setEraseWindow, setEraseTaskState}}/>
+      <AlertWindow children={alertJson.eraseTask[lang]} {...{alertWindow, setAlertWindow}}/>
 
         <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} 
           levelOptions={{level, percentage, eraseXPBar}} menu={{openMenu, setOpenMenu}} night={{nightMode, setNightMode}} />
