@@ -8,7 +8,7 @@ import type { Dispatch, RefObject, SetStateAction } from "react"
 function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState, recurrent}:
   {title:string, taskState: newTaskInterface[], setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, recurrent?: RefObject<boolean>} 
   & accordionInterface) {
-  const {lang, setAlertWindow} = user;
+  const {lang, setEraseWindow} = user;
   const {addTask, setAddTask,} = taskCreate;
   const {eraseTask, eraseTaskState, setEraseTaskState, taskToErase, reduceTimes} = taskErase;
 
@@ -24,7 +24,7 @@ function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskSt
                   return <div key={i + "div"} className={`bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8
                   ${object.completed && "hidden"}`}>
                       <TaskToDo key={i} 
-                      {...{lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
+                      {...{lang, object, reduceTimes, eraseTask, setEraseWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
                     </div>
                 })}
       

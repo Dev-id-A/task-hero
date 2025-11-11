@@ -5,7 +5,7 @@ import type { newTaskInterface } from "../Functions, states & interfaces/Types&I
 import type { alertWindowInterface, Lang } from "../Functions, states & interfaces/Types&Interfaces" 
 import { useEffect } from "react"
 
-function TaskToDo({lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTaskState, setEraseTaskState, taskToErase}:
+function TaskToDo({lang, object, reduceTimes, eraseTask, setEraseWindow, eraseTaskState, setEraseTaskState, taskToErase}:
   {lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void, eraseTask:(id:number)=>void, taskToErase: React.RefObject<number | null> } 
   & alertWindowInterface ) {
 
@@ -21,7 +21,7 @@ function TaskToDo({lang, object, reduceTimes, eraseTask, setAlertWindow, eraseTa
     <section className="size-full flex flex-col justify-center gap-5 px-5 py-3 text-center text-xl">
 
       <XBtn onclick={()=>{
-        setAlertWindow(true);
+        setEraseWindow(true);
         taskToErase.current = object.id
       }} />
 

@@ -73,11 +73,11 @@ import type { newTaskInterface } from "./Types&Interfaces";
     }
 
     export function windowsState(){
-        const [alertWindow, setAlertWindow] = useState<boolean>(false);   
+        const [eraseWindow, setEraseWindow] = useState<boolean>(false);   
         const [levelUpWindow, setLevelUpWindow] = useState<boolean>(false);   
 
         return {
-            alertWindow, setAlertWindow,
+            eraseWindow, setEraseWindow,
             levelUpWindow, setLevelUpWindow
         }
     }

@@ -1,6 +1,6 @@
 import { useEffect, useState} from "react"
 import type { propsType } from "../assets/Functions, states & interfaces/Types&Interfaces"; 
-import AlertWindow from "../assets/Windows/AlertWindow";
+import EraseWindow from "../assets/Windows/EraseWindow";
 import LevelUpWindow from "../assets/Windows/LevelUpWindow";
 import Navbar from "../assets/Home components/Navbar";
 import TaskAccordion from "../assets/Home components/TaskAccordion";
@@ -27,7 +27,7 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
     level, setLevel, actualXP, setActualXP, maxXP, setMaxXP} = levelStates();
 
   //Windows states
-  const {alertWindow, setAlertWindow, levelUpWindow, setLevelUpWindow} = windowsState();
+  const {eraseWindow, setEraseWindow, levelUpWindow, setLevelUpWindow} = windowsState();
 
   //Title state
   const [showTitle, setShowTitle] = useState<boolean>(false);
@@ -55,22 +55,22 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
     <main className="min-h-screen w-full bg-blue-100 overflow-x-hidden">
 
       <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
-      <AlertWindow {...{lang, alertWindow, setAlertWindow, setEraseTaskState}}/>
+      <EraseWindow {...{lang, eraseWindow, setEraseWindow, setEraseTaskState}}/>
 
         <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} 
           levelOptions={{level, percentage, eraseXPBar}} menu={{openMenu, setOpenMenu}} night={{nightMode, setNightMode}} />
 
-        <TaskAccordion title={homeJson.normalTask[lang]} user={{lang, setAlertWindow}} taskState={allTaskState} setTaskState={setAllTaskState}
+        <TaskAccordion title={homeJson.normalTask[lang]} user={{lang, setEraseWindow}} taskState={allTaskState} setTaskState={setAllTaskState}
           taskCreate={{addTask, setAddTask}}  taskErase={{ eraseTaskState, setEraseTaskState, taskToErase, 
           eraseTask:(id)=> eraseTask(id, setAllTaskState),
           reduceTimes:(id)=>reduceTimes(id, setAllTaskState, setActualXP)}}/>
 
-        <TaskAccordion title={homeJson.dailyTask[lang]} user={{lang, setAlertWindow}} taskState={dailyTaskState} setTaskState={setDailyTaskState}
+        <TaskAccordion title={homeJson.dailyTask[lang]} user={{lang, setEraseWindow}} taskState={dailyTaskState} setTaskState={setDailyTaskState}
           taskCreate={{addTask, setAddTask}}  taskErase={{eraseTaskState, setEraseTaskState, taskToErase, 
           eraseTask:(id)=> eraseTask(id, setDailyTaskState),
           reduceTimes:(id)=>reduceTimes(id, setDailyTaskState, setActualXP)}} recurrent={recurrent}/>
 
-        <TaskAccordion title={homeJson.weeklyTask[lang]} user={{lang, setAlertWindow}} taskState={weeklyTaskState} setTaskState={setWeeklyTaskState}
+        <TaskAccordion title={homeJson.weeklyTask[lang]} user={{lang, setEraseWindow}} taskState={weeklyTaskState} setTaskState={setWeeklyTaskState}
           taskCreate={{addTask, setAddTask}}  taskErase={{eraseTaskState, setEraseTaskState, taskToErase, 
           eraseTask:(id)=> eraseTask(id, setWeeklyTaskState),
           reduceTimes:(id)=>reduceTimes(id, setWeeklyTaskState, setActualXP)}} recurrent={recurrent}/>

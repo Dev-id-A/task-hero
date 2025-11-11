@@ -33,8 +33,8 @@ export interface nightModeInterface{
 }
 
 export interface alertWindowInterface{
-  alertWindow?: boolean;
-  setAlertWindow: ReactStateBool;
+  eraseWindow?: boolean;
+  setEraseWindow: ReactStateBool;
   eraseTaskState?: boolean;
   setEraseTaskState: ReactStateBool
 }
@@ -71,7 +71,7 @@ export interface NavbarInterface{
 export interface accordionInterface{
   user:{
     lang: Lang,
-    setAlertWindow: ReactStateBool
+    setEraseWindow: ReactStateBool
   }
   taskCreate:{
     addTask: boolean,
