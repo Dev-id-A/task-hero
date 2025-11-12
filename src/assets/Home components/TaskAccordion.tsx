@@ -1,13 +1,14 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion"
-import type { accordionInterface, newTaskInterface } from "../Functions, states & interfaces/Types&Interfaces"
+import type { accordionInterface, alertWindowInterface, newTaskInterface } from "../Functions, states & interfaces/Types&Interfaces"
 import TaskToDo from "../Task components/TaskToDo"
 import TaskInput from "../Task components/TaskInput"
 import AddTaskBtn from "../Task components/AddTaskBtn"
 import type { Dispatch, RefObject, SetStateAction } from "react"
 
-function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState, recurrent}:
-  {title:string, taskState: newTaskInterface[], setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, recurrent?: RefObject<boolean>} 
-  & accordionInterface) {
+function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState, recurrent, alertWindowsStates}:
+  {title:string, taskState: newTaskInterface[], setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, recurrent?: RefObject<boolean>,
+    alertWindowsStates: alertWindowInterface
+  } & accordionInterface) {
   const {lang, setEraseWindow} = user;
   const {addTask, setAddTask,} = taskCreate;
   const {eraseTask, eraseTaskState, setEraseTaskState, taskToErase, reduceTimes} = taskErase;
@@ -24,13 +25,14 @@ function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskSt
                   return <div key={i + "div"} className={`bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8
                   ${object.completed && "hidden"}`}>
                       <TaskToDo key={i} 
-                      {...{lang, object, reduceTimes, eraseTask, setEraseWindow, eraseTaskState, setEraseTaskState, taskToErase}} />
+                      {...{lang, object, reduceTimes, eraseTask, setEraseWindow,
+                      eraseTaskState, setEraseTaskState, taskToErase}} />
                     </div>
                 })}
       
                 <div className="bg-blue-200 min-h-100 flex flex-col items-center justify-center border-3 border-black m-8">
                   {addTask ?
-                  (<TaskInput {...{lang, taskState, setTaskState, setAddTask, recurrent}}/>):
+                  (<TaskInput {...{lang, taskState, setTaskState, setAddTask, recurrent, alertWindowsStates}}/>):
                   (<AddTaskBtn {...{addTask, setAddTask}}/>)}
                 </div>
               </section>

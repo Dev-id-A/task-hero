@@ -1,9 +1,9 @@
 import type { Lang } from "../Functions, states & interfaces/Types&Interfaces"
 import { alertJson } from "../Json/AlertsJson"
-import type { alertWindowInterface } from "../Functions, states & interfaces/Types&Interfaces"
+import type { eraseWindowInterface } from "../Functions, states & interfaces/Types&Interfaces"
 import { useEffect } from "react"
 
-function EraseWindow({lang, eraseWindow, setEraseWindow, setEraseTaskState}: {lang:Lang} & alertWindowInterface) {
+function EraseWindow({lang, eraseWindow, setEraseWindow, setEraseTaskState}: {lang:Lang} & eraseWindowInterface) {
 
   useEffect(()=>{
     if(eraseWindow){

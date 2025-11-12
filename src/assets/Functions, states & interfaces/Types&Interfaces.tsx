@@ -32,12 +32,19 @@ export interface nightModeInterface{
     setNightMode?: ReactStateBool;
 }
 
-export interface alertWindowInterface{
+export interface eraseWindowInterface{
   eraseWindow?: boolean;
   setEraseWindow: ReactStateBool;
   eraseTaskState?: boolean;
   setEraseTaskState: ReactStateBool
 }
+
+
+  export interface alertWindowInterface{
+    alertWindow?: boolean, 
+    setAlertWindow: ReactStateBool,
+    alertMsgRef: RefObject<string>
+  }
 
 export interface levelUpWindowInterface{
   levelUpWindow: boolean;

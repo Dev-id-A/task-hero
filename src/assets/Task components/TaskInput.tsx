@@ -2,12 +2,13 @@ import { useState, type Dispatch, type RefObject, type SetStateAction } from "re
 import type { Lang } from "../Functions, states & interfaces/Types&Interfaces" 
 import { homeJson, difficults } from "../Json/HomeJson"
 import TaskDiv from "./TaskDiv"
-import type { newTaskInterface } from "../Functions, states & interfaces/Types&Interfaces" 
+import type { newTaskInterface, alertWindowInterface } from "../Functions, states & interfaces/Types&Interfaces" 
 import XBtn from "../Options/XBtn"
 
-function TaskInput({lang, taskState, setTaskState, setAddTask, recurrent}:
-  {lang:Lang , taskState:newTaskInterface[], recurrent?: RefObject<boolean> ,
+function TaskInput({lang, taskState, setTaskState, setAddTask, recurrent, alertWindowsStates}:
+  {lang:Lang , taskState:newTaskInterface[], recurrent?: RefObject<boolean> , alertWindowsStates: alertWindowInterface
     setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, setAddTask: Dispatch<SetStateAction<boolean>>}) {
+       const { alertMsgRef, setAlertWindow } = alertWindowsStates;
 
   const [times, setTimes] = useState<number>(1)
   const [currentTask, setCurrentTask] = useState<newTaskInterface>({
@@ -29,7 +30,8 @@ function TaskInput({lang, taskState, setTaskState, setAddTask, recurrent}:
 
   const createTask = () => {
     if(currentTask.task == ""){
-      alert(homeJson.taskAlert[lang])
+      setAlertWindow(true);
+      alertMsgRef.current = homeJson.taskAlert[lang];
       return;
     }
     setTaskState([...taskState, currentTask]);
@@ -46,7 +48,8 @@ function TaskInput({lang, taskState, setTaskState, setAddTask, recurrent}:
 
   const alertInput = (e : number) =>{
     if (e > 1000 || e < 1){
-      alert(homeJson.alert[lang])
+      setAlertWindow(true);
+      alertMsgRef.current = homeJson.alert[lang];
       return;
     }
       setTimes(e)
