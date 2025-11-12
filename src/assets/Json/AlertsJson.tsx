@@ -182,6 +182,47 @@ export const titlesJson = [
 {
   es: "Recadero aclamado",
   en: "Acclaimed tasker"
+},
+  // Fifth ten levels
+{
+  es: "Recadero continental",
+  en: "Continental tasker"
+},
+{
+  es: "Recadero mundial",
+  en: "World tasker"
+},
+{
+  es: "Recadero de la humanidad",
+  en: "Humanity tasker"
+},
+{
+  es: "Recadero histórico",
+  en: "Historic tasker"
+},
+{
+  es: "Leyenda de los recados",
+  en: "Legend of errands"
+},
+{
+  es: "Recadero planetario",
+  en: "Planetary tasker"
+},
+{
+  es: "Recadero lunar",
+  en: "Lunar tasker"
+},
+{
+  es: "Recadero en marte",
+  en: "Martian tasker"
+},
+{
+  es: "Recadero espacial",
+  en: "Space tasker"
+},
+{
+  es: "Recadero del sol",
+  en: "Solar tasker"
 }
 
 ]
