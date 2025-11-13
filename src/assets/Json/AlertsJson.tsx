@@ -223,6 +223,46 @@ export const titlesJson = [
 {
   es: "Recadero del sol",
   en: "Solar tasker"
+},
+  //Sixth ten levels
+{
+  es: "Recadero a Plutón",
+  en: "Pluto tasker"
+},
+{
+  es: "Recadero a Mercurio",
+  en: "Mercury tasker"
+},
+{
+  es: "Recadero a Júpiter",
+  en: "Jupiter tasker"
+},
+{
+  es: "Recadero a Saturno",
+  en: "Saturn tasker"
+},
+{
+  es: "Recadero a Urano",
+  en: "Uranus tasker"
+},
+{
+  es: "Recadero a Neptuno",
+  en: "Neptune tasker"
+},
+{
+  es: "Recadero del sistema solar",
+  en: "Solar system tasker"
+},
+{
+  es: "Recadero vía láctea",
+  en: "Milky way tasker"
+},
+{
+  es: "Recadero galáctico",
+  en: "Galactic tasker"
+},
+{
+  es: "Recadero intergaláctico",
+  en: "Intergalactic tasker"
 }
-
 ]
