@@ -264,5 +264,47 @@ export const titlesJson = [
 {
   es: "Recadero intergaláctico",
   en: "Intergalactic tasker"
+},
+//Seventh ten levels
+{
+  es: "Enviador de agujeros oscuros",
+  en: "Dark Hole Tasker"
+},
+{
+  es: "Recadero de las estrellas",
+  en: "Star Tasker"
+},
+{
+  es: "Recadero de la nueva dimensión",
+  en: "New Dimension Tasker"
+},
+{
+  es: "Recadero de la nueva tierra",
+  en: "New Earth Tasker"
+},
+{
+  es: "Recadero de galaxico dimensional",
+  en: "Dimensional Galactic Tasker"
+},
+{
+  es: "Recadero de varias dimensiones",
+  en: "Multi-Dimension Tasker"
+},
+{
+  es: "Recadero interdimensional",
+  en: "Interdimensional Tasker"
+},
+{
+  es: "Recadero omnipresente",
+  en: "Omnipresent Tasker"
+},
+{
+  es: "Recadero a través del tiempo",
+  en: "Past Tasker"               
+},
+{
+  es: "Recadero a través del futuro",
+  en: "Future Tasker"             
 }
+
 ]
