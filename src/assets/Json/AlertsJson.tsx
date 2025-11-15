@@ -305,6 +305,46 @@ export const titlesJson = [
 {
   es: "Recadero a través del futuro",
   en: "Future Tasker"             
+},
+  //Eight ten levels
+{
+  es: "Recadero espacio-temporal",
+  en: "Space-temporal tasker"
+},
+{
+  es: "Profeta de los recados",
+  en: "Prophet of errands"
+},
+{
+  es: "Apóstol de los recados",
+  en: "Apostle of errands"
+},
+{
+  es: "Padre del recado",
+  en: "Father of the errand"
+},
+{
+  es: "Recadero bendecido",
+  en: "Blessed tasker"
+},
+{
+  es: "Divinidad de los recados",
+  en: "Divinity of errands"
+},
+{
+  es: "El recado original",
+  en: "The original errand"
+},
+{
+  es: "Semidiós de los recados",
+  en: "Demigod of errands"
+},
+{
+  es: "Dios de los recados",
+  en: "God of errands"
+},
+{
+  es: "Creador del recado original",
+  en: "Creator of the original errand"
 }
-
 ]
