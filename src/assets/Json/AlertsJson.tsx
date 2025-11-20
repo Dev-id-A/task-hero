@@ -348,44 +348,47 @@ export const titlesJson = [
   en: "Creator of the original errand"
 },
   //Ninth ten levels 
-// {
-//   es: "Recadero espacio-temporal",
-//   en: "Space-temporal tasker"
-// },
-// {
-//   es: "Profeta de los recados",
-//   en: "Prophet of errands"
-// },
-// {
-//   es: "Apóstol de los recados",
-//   en: "Apostle of errands"
-// },
-// {
-//   es: "Padre del recado",
-//   en: "Father of the errand"
-// },
-// {
-//   es: "Recadero bendecido",
-//   en: "Blessed tasker"
-// },
-// {
-//   es: "Divinidad de los recados",
-//   en: "Divinity of errands"
-// },
-// {
-//   es: "El recado original",
-//   en: "The original errand"
-// },
-// {
-//   es: "Semidiós de los recados",
-//   en: "Demigod of errands"
-// },
-// {
-//   es: "Dios de los recados",
-//   en: "God of errands"
-// },
-// {
-//   es: "Creador del recado original",
-//   en: "Creator of the original errand"
-// }
+[
+  {
+    "es": "Recadero sobre dios",
+    "en": "Tasker above gods"
+  },
+  {
+    "es": "Recadero deidad",
+    "en": "Deity tasker"
+  },
+  {
+    "es": "Recadero de lo atómico",
+    "en": "Atomic tasker"
+  },
+  {
+    "es": "Concepto del recado",
+    "en": "Concept of the tasker"
+  },
+  {
+    "es": "Recadero de la creación",
+    "en": "Creation tasker"
+  },
+  {
+    "es": "Ente del recado",
+    "en": "Entity of the tasker"
+  },
+  {
+    "es": "Recado sobre lo físico",
+    "en": "Physical tasker"
+  },
+  {
+    "es": "Religión del recado",
+    "en": "Religion of the tasker"
+  },
+  {
+    "es": "Recado en la tierra",
+    "en": "Earth tasker"
+  },
+  {
+    "es": "Recado en el cielo",
+    "en": "Heaven tasker"
+  }
+]
+
 ]
