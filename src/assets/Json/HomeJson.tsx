@@ -54,6 +54,10 @@ export const homeJson = {
     weeklyTask:{
         es: "Tareas semanales",
         en: "Weekly tasks"
+    },
+    eraseAccount:{
+        es: "Borrar cuenta",
+        en: "Erase account"
     }
     } as const;
 
