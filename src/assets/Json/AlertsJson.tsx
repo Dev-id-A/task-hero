@@ -265,7 +265,7 @@ export const titlesJson = [
   es: "Recadero intergaláctico",
   en: "Intergalactic tasker"
 },
-//Seventh ten levels
+  //Seventh ten levels
 {
   es: "Enviador de agujeros oscuros",
   en: "Dark Hole Tasker"
@@ -348,47 +348,85 @@ export const titlesJson = [
   en: "Creator of the original errand"
 },
   //Ninth ten levels 
-[
+{
+  "es": "Recadero sobre dios",
+  "en": "Tasker above gods"
+},
+{
+  "es": "Recadero deidad",
+  "en": "Deity tasker"
+},
+{
+  "es": "Recadero de lo atómico",
+  "en": "Atomic tasker"
+},
+{
+  "es": "Concepto del recado",
+  "en": "Concept of the tasker"
+},
+{
+  "es": "Recadero de la creación",
+  "en": "Creation tasker"
+},
+{
+  "es": "Ente del recado",
+  "en": "Entity of the tasker"
+},
+{
+  "es": "Recado sobre lo físico",
+  "en": "Physical tasker"
+},
+{
+  "es": "Religión del recado",
+  "en": "Religion of the tasker"
+},
+{
+  "es": "Recado en la tierra",
+  "en": "Earth tasker"
+},
+{
+  "es": "Recado en el cielo",
+  "en": "Heaven tasker"
+},
+//Ten level titles
   {
-    "es": "Recadero sobre dios",
+    "es": "Recado en el mar",
     "en": "Tasker above gods"
   },
   {
-    "es": "Recadero deidad",
-    "en": "Deity tasker"
+    "es": "Recado en el infierno",
+    "en": "Hell tasker"
   },
   {
-    "es": "Recadero de lo atómico",
-    "en": "Atomic tasker"
+    "es": "Recadero absoluto",
+    "en": "Absolute tasker"
   },
   {
-    "es": "Concepto del recado",
-    "en": "Concept of the tasker"
+    "es": "Recadero de lo existente",
+    "en": "Existential tasker"
   },
   {
-    "es": "Recadero de la creación",
-    "en": "Creation tasker"
+    "es": "Task Hero",
+    "en": "Task Hero"
   },
   {
-    "es": "Ente del recado",
-    "en": "Entity of the tasker"
+    "es": '"El" Task Hero',
+    "en": '"The" Task Hero'
   },
   {
-    "es": "Recado sobre lo físico",
-    "en": "Physical tasker"
+    "es": "Task Hero espiritual",
+    "en": "Spiritual Task Hero"
   },
   {
-    "es": "Religión del recado",
-    "en": "Religion of the tasker"
+    "es": "Task Hero deidad",
+    "en": "Divine Task Hero"
   },
   {
-    "es": "Recado en la tierra",
-    "en": "Earth tasker"
+    "es": "Task Hero completo",
+    "en": "Complete Task Hero"
   },
   {
-    "es": "Recado en el cielo",
-    "en": "Heaven tasker"
+    "es": "Task Hero absoluto",
+    "en": "Absolute Task Hero"
   }
-]
-
 ]
