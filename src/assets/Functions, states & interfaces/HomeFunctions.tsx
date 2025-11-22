@@ -46,9 +46,14 @@ import type { Lang, newTaskInterface, ReactStateBool, ReactStateNumber } from ".
         localStorage.setItem("maxXP", String(maxXP));
   }
 
-  export const animationXPBar = (actualXP:number, maxXP:number, setEraseXPBar: ReactStateBool, setLevelUpWindow: ReactStateBool, 
+  export const animationXPBar = (actualXP:number, maxXP:number, level:number, setEraseXPBar: ReactStateBool, setLevelUpWindow: ReactStateBool, 
     setPercentage: ReactStateNumber, setLevel: ReactStateNumber, setActualXP: ReactStateNumber, setMaxXP: ReactStateNumber) =>{
-        if(actualXP>=maxXP){
+      if (level === 100 && actualXP>=maxXP){
+        setPercentage(100);
+        return;
+      }
+      
+      if(actualXP>=maxXP){
       setPercentage(100);
 
         const eraseBar = setTimeout(()=>{

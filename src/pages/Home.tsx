@@ -43,7 +43,7 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
 
   useEffect(()=> localStorage.setItem("savedWeeklyTask", JSON.stringify(weeklyTaskState)),[weeklyTaskState]);
 
-  useEffect(()=> animationXPBar(actualXP, maxXP, setEraseXPBar, setLevelUpWindow, setPercentage, setLevel, setActualXP, setMaxXP),[actualXP]);
+  useEffect(()=> animationXPBar(actualXP, maxXP, level, setEraseXPBar, setLevelUpWindow, setPercentage, setLevel, setActualXP, setMaxXP),[actualXP]);
 
   useEffect(()=>{
     getLang(setLang); //Obtain language
