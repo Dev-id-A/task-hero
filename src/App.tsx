@@ -9,10 +9,12 @@ import type { Lang } from './assets/Functions, states & interfaces/Types&Interfa
 function App() {
   const [lang, setLang] = useState<Lang>("es");
   const [fadeLang, setFadeLang] = useState(false);
-  const [nightMode, setNightMode] = useState(false);
+  const [nightMode, setNightMode] = useState(()=>{
+    const mode = localStorage.getItem("mode")
+
+    return mode === "true";
+  });
   const user = useRef<HTMLInputElement | null>(null);
-
-
 
   const toggleFade = (langParam:Lang) => {
     if(langParam !== lang){
@@ -23,7 +25,7 @@ function App() {
     },500)
   }
   };
-
+  
   return (
     <>
       <Routes>

@@ -52,7 +52,7 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
   } ,[])
 
   return (
-    <main className="min-h-screen w-full bg-blue-100 overflow-x-hidden">
+    <main className={`min-h-screen w-full ${nightMode ? "bg-blue-500":"bg-blue-100"} overflow-x-hidden`}>
 
       <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
       <EraseWindow {...{lang, eraseWindow, setEraseWindow, setEraseTaskState}}/>
