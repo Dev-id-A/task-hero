@@ -14,7 +14,7 @@ export default function Navbar({user, title, levelOptions, menu, night}:NavbarIn
     const {nightMode, setNightMode} = night;
 
   return (
-          <section className="min-h-15 text-center bg-blue-500 text-3xl w-full flex flex-row border-t-1 border-blue-600">
+          <section className="min-h-15 text-center bg-blue-500 text-3xl w-full flex flex-row items-center border-t-1 border-blue-600">
 
             <div className="w-full flex flex-row items-center px-2" onClick={()=> setShowTitle(prev=> !prev)}>
             {showTitle ? 
