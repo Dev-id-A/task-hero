@@ -4,9 +4,13 @@ import NightModeBtn from "../Options/NightModeBtn";
 import Menu from "../Options/Menu";
 import type { NavbarInterface } from "../Functions, states & interfaces/Types&Interfaces";
 import { homeJson } from "../Json/HomeJson";
+import { useNavigate } from "react-router";
 
 
 export default function Navbar({user, title, levelOptions, menu, night}:NavbarInterface) {
+    const navigate = useNavigate();
+
+
     const {lang, username} = user;
     const {showTitle, setShowTitle} = title;
     const {level, percentage, eraseXPBar} = levelOptions;
@@ -14,7 +18,7 @@ export default function Navbar({user, title, levelOptions, menu, night}:NavbarIn
     const {nightMode, setNightMode} = night;
 
   return (
-          <section className="min-h-15 text-center bg-blue-500 text-3xl w-full flex flex-row items-center border-t-1 border-blue-600">
+          <section className="min-h-15 text-center bg-blue-500 text-3xl w-full flex flex-row border-t-1 border-blue-600">
 
             <div className="w-full flex flex-row items-center px-2" onClick={()=> setShowTitle(prev=> !prev)}>
             {showTitle ? 
@@ -31,13 +35,16 @@ export default function Navbar({user, title, levelOptions, menu, night}:NavbarIn
 
                     <NightModeBtn {...{nightMode, setNightMode}}/>
                       
-                    <button onClick={()=>localStorage.clear()}>{homeJson.eraseAccount[lang]}</button>
+                    <button onClick={()=>{
+                      localStorage.clear()
+                      navigate("/")
+                    }}>{homeJson.eraseAccount[lang]}</button>
 
                 </>}/>
 
-              <button className="h-10 w-18" onClick={()=>setOpenMenu(true)}>
-                <img src="/svg/hamburger.svg" alt="Hamburger icon" className="h-full w-full"/>
-              </button>
+                <button className="h-full w-18" onClick={()=>setOpenMenu(true)}>
+                  <img src="/svg/hamburger.svg" alt="Hamburger icon" className="h-full w-full"/>
+                </button>
 
           </section>
   )
