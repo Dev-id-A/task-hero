@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import type { propsType } from "../assets/Functions, states & interfaces/Types&Interfaces" 
 import NightModeBtn from "@/assets/Options/NightModeBtn"
+import LangOptions from "@/assets/Options/LangOptions"
 
 
 function Login({lang, toggleFade, nightMode, setNightMode, user}: propsType) {
@@ -41,15 +42,8 @@ function Login({lang, toggleFade, nightMode, setNightMode, user}: propsType) {
         ref={user} onChange={handleChangeBtn}/>
       </section>
 
-      <section className="flex flex-col gap-3">
-        <h2 className="text-center text-xl">{loginJson.language[lang]}</h2>
+      <LangOptions {...{lang, toggleFade}}/>
 
-        <div>
-          <LangIcon src="/svg/spain.svg" alt="Spanish icon" onClick={()=> toggleFade?.("es")}/>
-          <LangIcon src="/svg/uk.svg" alt="English icon" onClick={()=> toggleFade?.("en")}/>
-        </div>
-
-      </section>
         {hasValue ? 
         (
           <LinkBtn {...{lang, user}}/>
