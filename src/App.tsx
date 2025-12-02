@@ -32,7 +32,7 @@ function App() {
         <Route path="/" element={<Layout {...{fadeLang}} />} >
 
           <Route index element={<Login {...{lang, toggleFade, nightMode, setNightMode, user}} />}></Route>
-          <Route path="home" element={<Home {...{lang, setLang, nightMode, setNightMode, user}} />} ></Route>
+          <Route path="home" element={<Home {...{lang, toggleFade, setLang, nightMode, setNightMode, user}} />} ></Route>
 
         </Route>
         

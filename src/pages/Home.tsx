@@ -9,7 +9,7 @@ import { homeJson } from "../assets/Json/HomeJson";
 import { animationXPBar, reduceTimes, saveLevelAndXP, eraseTask, resetRecurrentTask, getLang } from "../assets/Functions, states & interfaces/HomeFunctions";
 import { taskState, levelStates, windowsState, taskEraseState,} from "../assets/Functions, states & interfaces/HomeStates";
 
-function Home({lang, setLang, nightMode, setNightMode}:propsType) {
+function Home({lang, setLang, nightMode, setNightMode, toggleFade}:propsType) {
 
   //Task states
   const {allTaskState, setAllTaskState, dailyTaskState, setDailyTaskState, weeklyTaskState, setWeeklyTaskState,
@@ -58,7 +58,7 @@ function Home({lang, setLang, nightMode, setNightMode}:propsType) {
       <EraseWindow {...{lang, eraseWindow, setEraseWindow, setEraseTaskState}}/>
       <AlertWindow  {...{alertMsgRef, alertWindow, setAlertWindow}}/>
 
-        <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} 
+        <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} toggleFade={toggleFade}
           levelOptions={{level, percentage, eraseXPBar}} menu={{openMenu, setOpenMenu}} night={{nightMode, setNightMode}} />
 
         <TaskAccordion title={homeJson.normalTask[lang]} user={{lang, setEraseWindow}} taskState={allTaskState} setTaskState={setAllTaskState}

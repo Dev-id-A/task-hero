@@ -2,14 +2,14 @@ import { titlesJson } from "../Json/AlertsJson";
 import XPBar from "../XPBar/XPBar";
 import NightModeBtn from "../Options/NightModeBtn";
 import Menu from "../Options/Menu";
-import type { NavbarInterface } from "../Functions, states & interfaces/Types&Interfaces";
+import type { NavbarInterface, Lang } from "../Functions, states & interfaces/Types&Interfaces";
 import { homeJson } from "../Json/HomeJson";
 import { useNavigate } from "react-router";
+import LangOptions from "../Options/LangOptions";
 
-
-export default function Navbar({user, title, levelOptions, menu, night}:NavbarInterface) {
+export default function Navbar({user, title, levelOptions, menu, night, toggleFade}:NavbarInterface & 
+  {toggleFade: ((langParam:Lang)=>void) | undefined}) {
     const navigate = useNavigate();
-
 
     const {lang, username} = user;
     const {showTitle, setShowTitle} = title;
@@ -32,6 +32,8 @@ export default function Navbar({user, title, levelOptions, menu, night}:NavbarIn
             
                 <Menu {...{lang, username, openMenu, setOpenMenu}} 
                 children={<>
+
+                    <LangOptions {...{lang, toggleFade}}/>
 
                     <NightModeBtn {...{nightMode, setNightMode}}/>
                       
