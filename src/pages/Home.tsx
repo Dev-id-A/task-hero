@@ -6,6 +6,7 @@ import AlertWindow from "../assets/Windows/AlertWindow";
 import Navbar from "../assets/Home components/Navbar";
 import TaskAccordion from "../assets/Home components/TaskAccordion";
 import { homeJson } from "../assets/Json/HomeJson";
+import { alertJson } from "../assets/Json/AlertsJson";
 import { animationXPBar, reduceTimes, saveLevelAndXP, eraseTask, resetRecurrentTask, getLang } from "../assets/Functions, states & interfaces/HomeFunctions";
 import { taskState, levelStates, windowsState, taskEraseState,} from "../assets/Functions, states & interfaces/HomeStates";
 
@@ -55,7 +56,7 @@ function Home({lang, setLang, nightMode, setNightMode, toggleFade}:propsType) {
     <main className={`min-h-screen w-full ${nightMode ? "bg-blue-500":"bg-blue-100"} overflow-x-hidden`}>
 
       <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
-      <EraseWindow {...{lang, eraseWindow, setEraseWindow, setEraseTaskState}}/>
+      <EraseWindow {...{lang, eraseWindow, setEraseWindow}} eraserFnc={setEraseTaskState} alertText={alertJson.eraseTask[lang]}/>
       <AlertWindow  {...{alertMsgRef, alertWindow, setAlertWindow}}/>
 
         <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} toggleFade={toggleFade}

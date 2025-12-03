@@ -36,14 +36,15 @@ export interface eraseWindowInterface{
   eraseWindow?: boolean;
   setEraseWindow: ReactStateBool;
   eraseTaskState?: boolean;
-  setEraseTaskState: ReactStateBool
+  eraserFnc: ReactStateBool;
+  alertText: string;
 }
 
 
   export interface alertWindowInterface{
-    alertWindow?: boolean, 
-    setAlertWindow: ReactStateBool,
-    alertMsgRef: RefObject<string>
+    alertWindow?: boolean;
+    setAlertWindow: ReactStateBool;
+    alertMsgRef: RefObject<string>;
   }
 
 export interface levelUpWindowInterface{
