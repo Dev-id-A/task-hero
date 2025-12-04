@@ -10,7 +10,7 @@ function App() {
   const [lang, setLang] = useState<Lang>("es");
   const [fadeLang, setFadeLang] = useState(false);
   const [nightMode, setNightMode] = useState(()=>{
-    const mode = localStorage.getItem("mode")
+    const mode = localStorage.getItem("mode");
 
     return mode === "true";
   });
@@ -18,10 +18,12 @@ function App() {
 
   const toggleFade = (langParam:Lang) => {
     if(langParam !== lang){
-    setFadeLang(true)
+    setFadeLang(true);
+    localStorage.setItem("lang", langParam);
+    console.log(lang)
     setTimeout(()=> {
-      setLang(langParam)
-      setFadeLang(false)
+      setLang(langParam);
+      setFadeLang(false);
     },500)
   }
   };

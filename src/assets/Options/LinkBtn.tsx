@@ -12,7 +12,6 @@ function LinkBtn({lang, user}:{
     const username = user.current?.value
     if (username){
       localStorage.setItem("username", username);
-      localStorage.setItem("lang", lang)
       navigate("/home");;
     }
   }

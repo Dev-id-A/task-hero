@@ -45,7 +45,7 @@ export const homeJson = {
     },
     normalTask:{
         es: "Tareas normales",
-        en: "NormalTask"
+        en: "Normal Task"
     },
     dailyTask:{
         es: "Tareas diarias",
