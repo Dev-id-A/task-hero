@@ -10,7 +10,7 @@ function TaskToDo({lang, object, reduceTimes, eraseTask, setEraseWindow, eraseTa
 
     useEffect(()=>{if (eraseTaskState && taskToErase.current === object.id) {
       eraseTask(object.id);
-      setEraseTaskState(false);
+      setEraseTaskState?.(false);
       taskToErase.current = null;
     }
     }, [eraseTaskState])

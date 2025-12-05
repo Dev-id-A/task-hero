@@ -33,11 +33,18 @@ export interface nightModeInterface{
 }
 
 export interface eraseWindowInterface{
-  eraseWindow?: boolean;
-  setEraseWindow: ReactStateBool;
+  windowBool?: boolean;
+  windowBoolSetter?: ReactStateBool;
+  
   eraseTaskState?: boolean;
-  eraserFnc: ReactStateBool;
-  alertText: string;
+  setEraseTaskState?: ReactStateBool;
+  eraseAccountWindow?: boolean;
+  setEraseAccountWindow?: ReactStateBool;
+
+  eraserFnc?: ReactStateBool;
+  alertText?: string;
+  eraseAccount?: boolean;
+  setEraseAccount?: ReactStateBool;
 }
 
 

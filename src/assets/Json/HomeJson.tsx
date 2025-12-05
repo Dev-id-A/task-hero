@@ -58,6 +58,10 @@ export const homeJson = {
     eraseAccount:{
         es: "Borrar cuenta",
         en: "Erase account"
+    },
+    eraseAccountAlert:{
+        es: "¿Estas seguro de que quieres borrar tu cuenta?",
+        en: "Do you really want to erase your account?"
     }
     } as const;
 

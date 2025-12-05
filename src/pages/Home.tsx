@@ -28,10 +28,14 @@ function Home({lang, setLang, nightMode, setNightMode, toggleFade}:propsType) {
     level, setLevel, actualXP, setActualXP, maxXP, setMaxXP} = levelStates();
 
   //Windows states
-  const {eraseWindow, setEraseWindow, levelUpWindow, setLevelUpWindow, alertWindow, setAlertWindow, alertMsgRef} = windowsState();
+  const {eraseWindow, setEraseWindow, levelUpWindow, setLevelUpWindow, alertWindow, setAlertWindow, alertMsgRef,
+    eraseAccountWindow, setEraseAccountWindow} = windowsState();
 
   //Title state
   const [showTitle, setShowTitle] = useState<boolean>(false);
+  
+  //Erase account
+  const [eraseAccount, setEraseAccount] = useState(false);
 
   //Local storage
   const username =  localStorage.getItem("username");
@@ -56,10 +60,12 @@ function Home({lang, setLang, nightMode, setNightMode, toggleFade}:propsType) {
     <main className={`min-h-screen w-full ${nightMode ? "bg-blue-500":"bg-blue-100"} overflow-x-hidden`}>
 
       <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
-      <EraseWindow {...{lang, eraseWindow, setEraseWindow}} eraserFnc={setEraseTaskState} alertText={alertJson.eraseTask[lang]}/>
+      <EraseWindow lang={lang} windowBool={eraseWindow} windowBoolSetter={setEraseWindow} 
+        eraserFnc={setEraseTaskState} alertText={alertJson.eraseTask[lang]}/>
       <AlertWindow  {...{alertMsgRef, alertWindow, setAlertWindow}}/>
 
-        <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} toggleFade={toggleFade}
+        <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} toggleFade={toggleFade}  
+          account={{eraseAccountWindow, setEraseAccountWindow, eraseAccount, setEraseAccount}}
           levelOptions={{level, percentage, eraseXPBar}} menu={{openMenu, setOpenMenu}} night={{nightMode, setNightMode}} />
 
         <TaskAccordion title={homeJson.normalTask[lang]} user={{lang, setEraseWindow}} taskState={allTaskState} setTaskState={setAllTaskState}
