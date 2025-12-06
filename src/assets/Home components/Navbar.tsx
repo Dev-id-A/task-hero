@@ -22,7 +22,6 @@ export default function Navbar({user, title, levelOptions, menu, night, account,
 
     useEffect(()=>{
       if (eraseAccount){
-        console.log("Hola")
         localStorage.clear()
         navigate("/")
       }

@@ -20,7 +20,6 @@ function App() {
     if(langParam !== lang){
     setFadeLang(true);
     localStorage.setItem("lang", langParam);
-    console.log(lang)
     setTimeout(()=> {
       setLang(langParam);
       setFadeLang(false);

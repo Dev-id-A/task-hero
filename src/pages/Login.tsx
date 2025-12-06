@@ -27,19 +27,20 @@ function Login({lang, toggleFade, nightMode, setNightMode, user}: propsType) {
   }
 
   return (
-    <main className={`flex flex-col items-center justify-center gap-15 ${nightMode ? "bg-black text-white":"bg-white"} min-h-screen`} >
+    <main className={`flex flex-col items-center justify-center gap-15 lg:gap-18 lg:pt-15
+    ${nightMode ? "bg-black text-white":"bg-white"} min-h-screen`} >
       
-      <div className="absolute flex flex-row items-center justify-between top-0 py-3 px-4 bg-blue-500 w-full text-3xl px-2">
-        <h1 className="">Task hero</h1>
+      <div className="absolute flex flex-row items-center justify-between top-0 py-3 px-4 bg-blue-500 w-full text-3xl xl:text-4xl px-2">
+        <h1>Task hero</h1>
         <NightModeBtn {...{nightMode, setNightMode}} />
       </div>
       
-        <h2 className="text-center text-3xl ">{loginJson.welcome[lang]}</h2>
+        <h2 className="text-center text-3xl xl:text-4xl">{loginJson.welcome[lang]}</h2>
         
-      <section className="flex flex-col items-center gap-3">
+      <section className="flex flex-col items-center gap-3 xl:gap-5">
         <LangIcon src="/svg/user-solid-full.svg" alt="Profile" btnStyle="bg-gray-300 rounded-full p-1 border-1 border-black rounded-full"/>
-        <input className="border-1 border-black text-center text-xl py-1" type="text" name="username" id="username" placeholder={loginJson.userInput[lang]} 
-        ref={user} onChange={handleChangeBtn}/>
+        <input className="border-1 border-black text-center text-xl xl:text-2xl py-1" 
+        type="text" name="username" id="username" placeholder={loginJson.userInput[lang]} ref={user} onChange={handleChangeBtn}/>
       </section>
 
       <LangOptions {...{lang, toggleFade}}/>
@@ -48,7 +49,7 @@ function Login({lang, toggleFade, nightMode, setNightMode, user}: propsType) {
         (
           <LinkBtn {...{lang, user}}/>
         ):(
-        <button className="border-1 text-2xl w-30 h-15 bg-gray-300">{loginJson.enter[lang]}</button>
+        <button className="border-1 text-2xl xl:text-3xl w-30 h-15 xl:w-35 xl:h-18 bg-gray-300">{loginJson.enter[lang]}</button>
         )}
         
 

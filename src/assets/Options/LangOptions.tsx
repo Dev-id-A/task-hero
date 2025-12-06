@@ -5,9 +5,9 @@ import LangIcon from "./LangIcon"
 function LangOptions({lang, toggleFade}: {lang: Lang, toggleFade: ((langParam:Lang)=>void) | undefined}) {
   return (
     <section className="flex flex-col gap-3">
-        <h2 className="text-center text-xl">{loginJson.language[lang]}</h2>
+        <h2 className="text-center text-xl xl:text-2xl">{loginJson.language[lang]}</h2>
 
-        <div>
+        <div className="flex flex-row gap-1">
           <LangIcon src="/svg/spain.svg" alt="Spanish icon" onClick={()=> toggleFade?.("es")}/>
           <LangIcon src="/svg/uk.svg" alt="English icon" onClick={()=> toggleFade?.("en")}/>
         </div>
