@@ -2,14 +2,14 @@ import type { Lang } from "../Functions, states & interfaces/Types&Interfaces"
 import { loginJson } from "../Json/LoginJson"
 import LangIcon from "./LangIcon"
 
-function LangOptions({lang, toggleFade}: {lang: Lang, toggleFade: ((langParam:Lang)=>void) | undefined}) {
+function LangOptions({lang, toggleFade, nightMode}: {lang: Lang, toggleFade: ((langParam:Lang)=>void) | undefined, nightMode:boolean}) {
   return (
     <section className="flex flex-col gap-3">
         <h2 className="text-center text-xl xl:text-2xl">{loginJson.language[lang]}</h2>
 
         <div className="flex flex-row gap-1">
-          <LangIcon src="/svg/spain.svg" alt="Spanish icon" onClick={()=> toggleFade?.("es")}/>
-          <LangIcon src="/svg/uk.svg" alt="English icon" onClick={()=> toggleFade?.("en")}/>
+          <LangIcon {...{nightMode}} src="/svg/spain.svg" alt="Spanish icon" onClick={()=> toggleFade?.("es")}/>
+          <LangIcon {...{nightMode}} src="/svg/uk.svg" alt="English icon" onClick={()=> toggleFade?.("en")}/>
         </div>
 
       </section>
