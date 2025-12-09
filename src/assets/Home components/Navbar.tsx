@@ -46,7 +46,7 @@ export default function Navbar({user, title, levelOptions, menu, night, account,
                 <Menu {...{lang, username, openMenu, setOpenMenu, account}} 
                 children={<>
 
-                    <LangOptions {...{lang, toggleFade}}/>
+                    <LangOptions {...{lang, toggleFade, nightMode}}/>
 
                     <NightModeBtn {...{nightMode, setNightMode}}/>
                       
