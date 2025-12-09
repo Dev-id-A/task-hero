@@ -1,12 +1,12 @@
 import TaskDiv from "./TaskDiv"
 import XBtn from "../Options/XBtn"
 import { homeJson } from "../Json/HomeJson"
-import type { newTaskInterface, eraseWindowInterface, Lang } from "../Functions, states & interfaces/Types&Interfaces" 
+import type { newTaskInterface, eraseWindowInterface, Lang, ReactStateBool } from "../Functions, states & interfaces/Types&Interfaces" 
 import { useEffect } from "react"
 
 function TaskToDo({lang, object, reduceTimes, eraseTask, setEraseWindow, eraseTaskState, setEraseTaskState, taskToErase}:
   {lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void, eraseTask:(id:number)=>void, taskToErase: React.RefObject<number | null> 
-  } & eraseWindowInterface ) {
+  setEraseWindow: ReactStateBool} & eraseWindowInterface ) {
 
     useEffect(()=>{if (eraseTaskState && taskToErase.current === object.id) {
       eraseTask(object.id);
