@@ -99,4 +99,5 @@ export interface accordionInterface{
     taskToErase: React.RefObject<number | null>,
     reduceTimes:(id:number)=>void,
   }
+  nightMode: boolean
 }

@@ -7,7 +7,7 @@ import type { Dispatch, RefObject, SetStateAction } from "react"
 import {easeIn, motion} from "framer-motion"
 
 
-function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskState, recurrent, alertWindowsStates}:
+function TaskAccordion({nightMode, title, user, taskCreate, taskErase, taskState, setTaskState, recurrent, alertWindowsStates}:
   {title:string, taskState: newTaskInterface[], setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, recurrent?: RefObject<boolean>,
     alertWindowsStates: alertWindowInterface
   } & accordionInterface) {
@@ -18,8 +18,9 @@ function TaskAccordion({title, user, taskCreate, taskErase, taskState, setTaskSt
   return (
     <Accordion type="single" collapsible>
         <AccordionItem value="tasks" >
-            <AccordionTrigger className="w-full justify-center text-2xl font-bold border-y-1 border-black rounded-none
-            [&>svg]:size-8 [&>svg]:duration-500 [&>svg]:text-black">
+            <AccordionTrigger className={`w-full justify-center text-2xl font-bold border-y-1 rounded-none
+            [&>svg]:size-8 [&>svg]:duration-500 [&>svg]:text-black
+            ${nightMode ? "border-white":"border-black"}`}>
               {title}</AccordionTrigger>
             <AccordionContent>
               <section 

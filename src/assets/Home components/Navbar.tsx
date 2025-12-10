@@ -28,7 +28,8 @@ export default function Navbar({user, title, levelOptions, menu, night, account,
     }, [eraseAccount])
 
   return (
-          <section className="min-h-15 text-center bg-blue-500 text-3xl w-full flex flex-row border-t-1 border-blue-600">
+          <section className={`min-h-15 text-center bg-[#63B8FF] text-3xl w-full flex flex-row border-t-1 border-blue-600
+          ${nightMode && "bg-[#36648B]"}`}>
 
             <EraseWindow lang={lang} windowBool={eraseAccountWindow} windowBoolSetter={setEraseAccountWindow} eraserFnc={setEraseAccount} 
               alertText={homeJson.eraseAccountAlert[lang]}/>
