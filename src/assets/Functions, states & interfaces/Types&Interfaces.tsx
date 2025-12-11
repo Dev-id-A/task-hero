@@ -8,6 +8,7 @@ export type ReactStateNumber = React.Dispatch<React.SetStateAction<number>>
 export interface menuInterface{
   openMenu: boolean,
   setOpenMenu: ReactStateBool
+  nightMode: boolean
 }
 
 export interface newTaskInterface{
