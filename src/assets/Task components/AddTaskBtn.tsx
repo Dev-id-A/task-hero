@@ -1,11 +1,11 @@
 import type { Dispatch, SetStateAction } from "react"
 
-function AddTaskBtn({setAddTask}:{setAddTask: Dispatch<SetStateAction<boolean>>}) {
+function AddTaskBtn({nightMode, setAddTask}:{nightMode: boolean, setAddTask: Dispatch<SetStateAction<boolean>>}) {
   return (
-    <button onClick={()=> setAddTask(true)} className="bg-blue-200 flex align-center justify-center cursor-pointer">
+    <button onClick={()=> setAddTask(true)} className="flex align-center justify-center cursor-pointer">
         <img 
         
-        className="size-24 border-3 border-black bg-blue-300" src="/svg/plus.svg" alt="Plus image" />
+        className={`size-24 border-3 border-black ${nightMode ? "bg-[#1F1F1F]":"bg-blue-300"}`} src="/svg/plus.svg" alt="Plus image" />
     </button>
   )
 }

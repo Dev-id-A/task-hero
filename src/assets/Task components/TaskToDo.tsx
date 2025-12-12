@@ -4,9 +4,9 @@ import { homeJson } from "../Json/HomeJson"
 import type { newTaskInterface, eraseWindowInterface, Lang, ReactStateBool } from "../Functions, states & interfaces/Types&Interfaces" 
 import { useEffect } from "react"
 
-function TaskToDo({lang, object, reduceTimes, eraseTask, setEraseWindow, eraseTaskState, setEraseTaskState, taskToErase}:
-  {lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void, eraseTask:(id:number)=>void, taskToErase: React.RefObject<number | null> 
-  setEraseWindow: ReactStateBool} & eraseWindowInterface ) {
+function TaskToDo({nightMode, lang, object, reduceTimes, eraseTask, setEraseWindow, eraseTaskState, setEraseTaskState, taskToErase}:
+  {nightMode: boolean, lang:Lang, object : newTaskInterface, reduceTimes:(id:number)=>void, eraseTask:(id:number)=>void, 
+  taskToErase: React.RefObject<number | null>, setEraseWindow: ReactStateBool} & eraseWindowInterface ) {
 
     useEffect(()=>{if (eraseTaskState && taskToErase.current === object.id) {
       eraseTask(object.id);
@@ -36,7 +36,8 @@ function TaskToDo({lang, object, reduceTimes, eraseTask, setEraseWindow, eraseTa
       <TaskDiv title={homeJson.exp[lang]} divClass="flex flex-row self-center gap-2" 
       children={<h3>{object.exp} <span className="text-blue-500 font-bold">XP</span></h3>} />
 
-      <button className="border-1 border-black p-1 bg-green-300 cursor-pointer mx-10" 
+      <button className={`border-1 border-black p-1 cursor-pointer mx-10
+      ${nightMode ? "bg-green-900":"bg-green-300"}`} 
       onClick={()=>reduceTimes(object.id)}>
         {homeJson.complete[lang]}</button>
     </section>

@@ -5,8 +5,8 @@ import TaskDiv from "./TaskDiv"
 import type { newTaskInterface, alertWindowInterface } from "../Functions, states & interfaces/Types&Interfaces" 
 import XBtn from "../Options/XBtn"
 
-function TaskInput({lang, taskState, setTaskState, setAddTask, recurrent, alertWindowsStates}:
-  {lang:Lang , taskState:newTaskInterface[], recurrent?: RefObject<boolean> , alertWindowsStates: alertWindowInterface
+function TaskInput({nightMode, lang, taskState, setTaskState, setAddTask, recurrent, alertWindowsStates}:
+  {nightMode: boolean, lang:Lang , taskState:newTaskInterface[], recurrent?: RefObject<boolean> , alertWindowsStates: alertWindowInterface
     setTaskState: Dispatch<SetStateAction<newTaskInterface[]>>, setAddTask: Dispatch<SetStateAction<boolean>>}) {
        const { alertMsgRef, setAlertWindow } = alertWindowsStates;
 
@@ -65,15 +65,17 @@ function TaskInput({lang, taskState, setTaskState, setAddTask, recurrent, alertW
       <h2 className="text-3xl">{homeJson.addTask[lang]}</h2>
 
       <TaskDiv title={homeJson.task[lang]} divClass="flex flex-col gap-1" 
-      children={<input className="w-full border-1 border-black rounded-sm px-1" type="text" placeholder={homeJson.taskExample[lang]} 
+      children={<input className={`w-full border-1 border-black rounded-sm px-1
+        ${nightMode && "bg-[#424242]"} `} type="text" placeholder={homeJson.taskExample[lang]} 
       onChange={(e)=>setCurrentTask({...currentTask, task: e.target.value}) } />} />
       
       <TaskDiv title={homeJson.times[lang]} divClass="flex flex-row self-center gap-2" 
-      children={<input className="w-1/3 h-fit border-1 border-black rounded-sm px-1" type="number" min={1} max={1000} step={1} value={times}
+      children={<input className={`w-1/3 h-fit border-1 border-black rounded-sm px-1
+        ${nightMode && "bg-[#424242]"}`} type="number" min={1} max={1000} step={1} value={times}
       onChange={(e)=> alertInput(Number(e.target.value))} />} />
 
       <TaskDiv title={homeJson.difficult[lang]} divClass="flex flex-row items-center gap-1" 
-      children={<select className="w-full text-center" name="difficult" id="select-difficult" 
+      children={<select className={`w-full text-center ${nightMode && "bg-[#262626]"}`} name="difficult" id="select-difficult" 
       onChange={(e)=>setCurrentTask({...currentTask, difficult: e.target.value, exp: experience[e.target.value as keyof typeof experience] }) }>
           {difficults.map((mode)=>{
             return <option key={mode.en} value={mode[lang]}>{mode[lang]}</option>
@@ -83,7 +85,8 @@ function TaskInput({lang, taskState, setTaskState, setAddTask, recurrent, alertW
       <TaskDiv title={homeJson.exp[lang]} divClass="flex flex-row items-center gap-1" 
       children={<h3 className="text-blue-500 font-bold">{currentTask.exp} XP</h3>}/>
 
-      <button className="border-1 border-black p-1 bg-green-300 cursor-pointer mx-10" onClick={()=> createTask()}>{homeJson.add[lang]}</button>
+      <button className={`border-1 border-black p-1 cursor-pointer mx-10 
+      ${nightMode ? "bg-green-900":"bg-green-300"}`} onClick={()=> createTask()}>{homeJson.add[lang]}</button>
     </div>
   )
 }
