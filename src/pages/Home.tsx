@@ -59,10 +59,10 @@ function Home({lang, setLang, nightMode, setNightMode, toggleFade}:propsType) {
   return (
     <main className={`min-h-screen w-full ${nightMode ? "bg-[#1F1F1F] text-white":"bg-white"} overflow-x-hidden`}>
 
-      <LevelUpWindow {...{lang, level, levelUpWindow, setLevelUpWindow}}/>
-      <EraseWindow lang={lang} windowBool={eraseWindow} windowBoolSetter={setEraseWindow} 
+      <LevelUpWindow {...{nightMode, lang, level, levelUpWindow, setLevelUpWindow}}/>
+      <EraseWindow {...{nightMode, lang}} windowBool={eraseWindow} windowBoolSetter={setEraseWindow} 
         eraserFnc={setEraseTaskState} alertText={alertJson.eraseTask[lang]}/>
-      <AlertWindow  {...{alertMsgRef, alertWindow, setAlertWindow}}/>
+      <AlertWindow  {...{nightMode, alertMsgRef, alertWindow, setAlertWindow}}/>
 
         <Navbar user={{lang, username}} title={{showTitle, setShowTitle}} toggleFade={toggleFade}  
           account={{eraseAccountWindow, setEraseAccountWindow, eraseAccount, setEraseAccount}}
