@@ -31,7 +31,7 @@ export default function Navbar({user, title, levelOptions, menu, night, account,
           <section className={`min-h-15 text-center bg-[#63B8FF] text-3xl w-full flex flex-row border-t-1 border-blue-600
           ${nightMode && "bg-[#36648B]"}`}>
 
-            <EraseWindow lang={lang} windowBool={eraseAccountWindow} windowBoolSetter={setEraseAccountWindow} eraserFnc={setEraseAccount} 
+            <EraseWindow {...{nightMode, lang}} windowBool={eraseAccountWindow} windowBoolSetter={setEraseAccountWindow} eraserFnc={setEraseAccount} 
               alertText={homeJson.eraseAccountAlert[lang]}/>
 
             <div className="w-full flex flex-row items-center px-2" onClick={()=> setShowTitle(prev=> !prev)}>
