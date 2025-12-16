@@ -50,6 +50,7 @@ export interface eraseWindowInterface{
 
 
   export interface alertWindowInterface{
+    nightMode?: boolean
     alertWindow?: boolean;
     setAlertWindow: ReactStateBool;
     alertMsgRef: RefObject<string>;
